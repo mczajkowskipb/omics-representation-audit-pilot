@@ -98,6 +98,20 @@ Final validation and reporting are reproducible with:
 .venv/bin/python scripts/09_generate_closeout_report.py
 ```
 
+## Post-pilot grant package
+
+The pilot remains closed at Gate C STOP. Grant-facing material is kept under
+`docs/grant/` and is validated against the frozen PILOT-019 evidence rather
+than manually copying result values:
+
+```bash
+.venv/bin/python scripts/10_validate_grant_package.py
+```
+
+The package contains a Polish scientific core, an OSF-oriented PL/EN starter,
+an insertion-ready English preliminary-results section and explicit claim
+boundaries. It does not execute or claim results for PILOT-016--018.
+
 ## Leakage boundary
 
 `DatasetBundle` deliberately has no label field. Evaluation labels live in the

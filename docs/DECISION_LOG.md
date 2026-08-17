@@ -121,3 +121,19 @@ partial file, `data/final/GSE19804/.X_features_x_samples.csv.Bceve0`, timestampe
 before the closeout run. It was preserved rather than deleted. Git reported no
 tracked changes, and the adapter accepted only the tracked GSE19804 matrix with
 the manifest-pinned size and SHA-256; the untracked file was not read.
+
+## Post-pilot grant-writing block
+
+33. The scientific pilot remains closed at commit `9adae88`; the grant-writing
+    block does not reopen Gate C, run PILOT-016--018 or create a new scientific
+    result.
+34. Grant-facing numerical claims are machine-checked against
+    `docs/evidence/PILOT_019_VALIDATION.json`. Gate B remains GO, Gate C remains
+    STOP and real within-dataset results remain descriptive.
+35. The proposed SONATA BIS centre of gravity is TRPP: source-only
+    representation adequacy followed by prospective direct sparse relational
+    regions and frozen multi-cohort transfer. Automatic representation
+    selection is not presented as already validated across cohorts.
+36. Anchor restriction is conditional and anchor sets are excluded from the
+    core proposal. No target-driven rescue, threshold relaxation or additional
+    post-label model selection is authorised by this writing block.

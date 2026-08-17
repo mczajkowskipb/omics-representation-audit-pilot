@@ -1,0 +1,68 @@
+{
+  "schema": "GrantClaimsEvidence/v1",
+  "protocol_sha256": "5104901b66403ab29bbad24f7fdc48dda10121b1a584740ec47af02790d6a704",
+  "pilot_commit": "9adae889601486ffb5e9e29f29afe16cc1e1e698",
+  "primary_evidence": "docs/evidence/PILOT_019_VALIDATION.json",
+  "grant_documents": [
+    "docs/grant/SONATA_BIS16_SCIENTIFIC_CORE_PL.md",
+    "docs/grant/SONATA_BIS16_OSF_STARTER_PL_EN.md",
+    "docs/grant/SONATA_BIS16_PRELIMINARY_RESULTS_EN.md",
+    "docs/grant/SONATA_BIS16_CLAIM_BOUNDARIES.md"
+  ],
+  "metrics": {
+    "gate_b": {
+      "formal_decision": "GO",
+      "job_count": 630,
+      "metrics": {
+        "exact_family_identification_rate": 0.9333333333333333,
+        "hybrid_selection_on_pure_rate": 0.0,
+        "median_target_ari_regret": 0.0,
+        "null_false_structure_rate": 0.06666666666666667,
+        "source_audit_target_performance_spearman": 0.8537187605657743
+      }
+    },
+    "gate_c": {
+      "formal_decision": "STOP",
+      "regret_by_direction": {
+        "GSE10072_to_GSE19804": 0.10528419284859625,
+        "GSE19804_to_GSE10072": 0.0
+      }
+    },
+    "real_within": {
+      "dataset_count": 11,
+      "decision_counts": {
+        "HYBRID": 1,
+        "RELATIONAL": 8,
+        "VALUE": 2
+      },
+      "interpretation": "DESCRIPTIVE_NOT_EXTERNAL_VALIDATION",
+      "median_ari_regret": 0.01058923746042384,
+      "median_selected_ari": 0.06516496588758039,
+      "selected_within_0_05_of_oracle_rate": 0.8181818181818182
+    }
+  },
+  "scope": {
+    "PILOT-016": "NOT_RUN_BLOCKED_BY_GATE_C_STOP",
+    "PILOT-017": "NOT_RUN_BLOCKED_BY_GATE_C_STOP",
+    "PILOT-018": "NOT_RUN_BLOCKED_BY_GATE_C_STOP",
+    "retrospective_gate_c_rescue": false
+  },
+  "required_boundary_literals": [
+    "Gate B: GO",
+    "Gate C: STOP",
+    "direct regions: NOT TESTED",
+    "anchors: NOT TESTED",
+    "labels were used only after all source-only decisions and assignments had been frozen"
+  ],
+  "forbidden_claim_literals": [
+    "Gate C: GO",
+    "Gate C = GO",
+    "external validation passed",
+    "fully validated automatic selector",
+    "direct regions were validated",
+    "anchors were validated",
+    "PILOT-016: COMPLETE",
+    "PILOT-017: COMPLETE",
+    "PILOT-018: COMPLETE"
+  ]
+}
