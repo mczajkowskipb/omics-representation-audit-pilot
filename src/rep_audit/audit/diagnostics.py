@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Sequence
+from dataclasses import dataclass
 
 import numpy as np
 from scipy.stats import spearmanr
@@ -11,6 +12,7 @@ from sklearn.metrics import adjusted_rand_score
 from rep_audit.audit.config import AuditConfig, stable_seed
 from rep_audit.audit.distances import (
     FrozenDistanceSet,
+    SourceRepresentationSet,
     build_frozen_perturbation_distances,
     build_source_representations,
     method_family,
@@ -192,10 +194,25 @@ def perturbation_scores(
     )
 
 
-def run_source_audit(source: DatasetBundle, config: AuditConfig) -> SourceAuditReport:
-    """Run the complete audit without accepting a target or label object."""
+@dataclass(frozen=True, slots=True)
+class FittedSourceAudit:
+    """Audit report together with its in-memory source-fitted representations."""
 
-    representations = build_source_representations(source, config)
+    report: SourceAuditReport
+    representations: SourceRepresentationSet
+
+
+def fit_source_audit(
+    source: DatasetBundle,
+    config: AuditConfig,
+    *,
+    allowed_feature_ids: Sequence[object] | None = None,
+) -> FittedSourceAudit:
+    """Fit using source values; target may contribute feature IDs only."""
+
+    representations = build_source_representations(
+        source, config, allowed_feature_ids=allowed_feature_ids
+    )
     perturbation_specs = audit_perturbation_suite(
         count=config.resamples,
         seed=stable_seed(config.seed, "audit_perturbations"),
@@ -262,7 +279,7 @@ def run_source_audit(source: DatasetBundle, config: AuditConfig) -> SourceAuditR
         except (ValueError, RuntimeError, FloatingPointError) as error:
             failures[method_id] = f"{type(error).__name__}: {error}"
 
-    return SourceAuditReport(
+    report = SourceAuditReport(
         source_dataset_id=source.dataset_id,
         source_fingerprint=source.fingerprint(),
         config_sha256=config.sha256(),
@@ -271,3 +288,10 @@ def run_source_audit(source: DatasetBundle, config: AuditConfig) -> SourceAuditR
         methods=tuple(sorted(methods, key=lambda item: item.method_id)),
         failures=failures,
     )
+    return FittedSourceAudit(report=report, representations=representations)
+
+
+def run_source_audit(source: DatasetBundle, config: AuditConfig) -> SourceAuditReport:
+    """Run the complete audit without accepting a target or label object."""
+
+    return fit_source_audit(source, config).report

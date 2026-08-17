@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from pathlib import Path
@@ -84,6 +85,28 @@ class NullCalibrationArtifact:
     def save(self, path: str | Path) -> None:
         atomic_write_bytes(path, self.to_json_bytes())
 
+    @classmethod
+    def from_dict(cls, value: Mapping[str, Any]) -> "NullCalibrationArtifact":
+        if value.get("schema") != "NullCalibrationArtifact/v1":
+            raise ValueError("not a NullCalibrationArtifact/v1")
+        return cls(
+            k=int(value["k"]),
+            quantile=float(value["quantile"]),
+            method_thresholds={
+                str(key): float(item) for key, item in value["method_thresholds"].items()
+            },
+            method_counts={
+                str(key): int(item) for key, item in value["method_counts"].items()
+            },
+            delta_hybrid=float(value["delta_hybrid"]),
+            null_report_sha256=tuple(str(item) for item in value["null_report_sha256"]),
+            multiple_testing_margin=float(value["multiple_testing_margin"]),
+        )
+
+    @classmethod
+    def load(cls, path: str | Path) -> "NullCalibrationArtifact":
+        return cls.from_dict(json.loads(Path(path).read_text(encoding="utf-8")))
+
 
 @dataclass(frozen=True, slots=True)
 class RepresentationSelection:
@@ -156,6 +179,38 @@ class RepresentationSelection:
 
     def save(self, path: str | Path) -> None:
         atomic_write_bytes(path, self.to_json_bytes())
+
+    @classmethod
+    def from_dict(cls, value: Mapping[str, Any]) -> "RepresentationSelection":
+        if value.get("schema") != "RepresentationSelection/v1":
+            raise ValueError("not a RepresentationSelection/v1")
+        return cls(
+            decision=str(value["decision"]),
+            uncertain=bool(value["uncertain"]),
+            decision_confidence=float(value["decision_confidence"]),
+            selected_method=(
+                None if value["selected_method"] is None else str(value["selected_method"])
+            ),
+            selected_k=int(value["selected_k"]),
+            selected_alpha=(
+                None if value["selected_alpha"] is None else float(value["selected_alpha"])
+            ),
+            q_score=None if value["q_score"] is None else float(value["q_score"]),
+            null_threshold=(
+                None if value["null_threshold"] is None else float(value["null_threshold"])
+            ),
+            eligible_alternatives=tuple(str(item) for item in value["eligible_alternatives"]),
+            rejection_reasons={
+                str(key): str(item) for key, item in value["rejection_reasons"].items()
+            },
+            vote_counts={str(key): int(item) for key, item in value["vote_counts"].items()},
+            audit_report_sha256=tuple(str(item) for item in value["audit_report_sha256"]),
+            calibration_sha256=str(value["calibration_sha256"]),
+        )
+
+    @classmethod
+    def load(cls, path: str | Path) -> "RepresentationSelection":
+        return cls.from_dict(json.loads(Path(path).read_text(encoding="utf-8")))
 
 
 def _higher_quantile(values: Sequence[float], quantile: float) -> float:

@@ -1,0 +1,55 @@
+{
+  "schema": "Pilot012015Evidence/v1",
+  "protocol_sha256": "5104901b66403ab29bbad24f7fdc48dda10121b1a584740ec47af02790d6a704",
+  "reference_revisions": {
+    "rank-relational-clustering-feasibility": "dc97680a1e944e74924b5e7b151e0c27d5655f22",
+    "AIR-relational-benchmark": "2dee739f6ee5e001ef1be76df2eb753ca389adb3"
+  },
+  "gate_b": {
+    "go": true,
+    "jobs": 630,
+    "signal_jobs": 540,
+    "null_jobs": 90,
+    "exact_family_identification_rate": 0.9333333333333333,
+    "median_target_ari_regret": 0.0,
+    "null_false_structure_rate": 0.06666666666666667,
+    "hybrid_selection_on_pure_rate": 0.0,
+    "source_audit_target_performance_spearman": 0.8537187605657743,
+    "summary_sha256": "dedd2af3168909257a2a4d6b4b1939c24cd0494e07f4bc2a32cb8f499842603f",
+    "prelabel_scientific_tree_sha256": "6f84a699e895819fb0beae3012712d1f80f4581e68cf25b976e09e7f764e6667",
+    "evaluation_tree_sha256": "daf6378a73c42f7d6dbb0ebdbebe7f5484aee0a6bff39e9a69a572dbf603a975"
+  },
+  "gate_c": {
+    "go": false,
+    "summary_sha256": "f6f380cc6d549a03ccf2832aaedf84a21709b8d01cbf2bfd3ca14d402cf9bccd",
+    "prelabel_tree_sha256": "4b17e30afdf4f4a0644eae78ca20923c2acfc310ca45f270680fbf14f89a37c5",
+    "GSE10072_to_GSE19804": {
+      "decision": "VALUE",
+      "selected_method": "V_COR_PAM",
+      "selected_target_ari": 0.5588764854159165,
+      "oracle_method": "H_EUC_PAIR_A025_PAM",
+      "oracle_target_ari": 0.6641606782645127,
+      "regret": 0.10528419284859625,
+      "coverage": 0.8333333333333334,
+      "minimum_assigned_cluster_fraction": 0.3333333333333333,
+      "prelabel_marker_sha256": "5672c89d6e11ab1b7565c20819e6771938f152c7b280ac9e25d923a09a2b1663"
+    },
+    "GSE19804_to_GSE10072": {
+      "decision": "RELATIONAL",
+      "selected_method": "R_PAIR_PAM",
+      "selected_target_ari": 0.925939915879794,
+      "oracle_method": "H_EUC_PAIR_A025_PAM",
+      "oracle_target_ari": 0.925939915879794,
+      "regret": 0.0,
+      "coverage": 0.9252336448598131,
+      "minimum_assigned_cluster_fraction": 0.40186915887850466,
+      "prelabel_marker_sha256": "a9f8d1ac3cd373e96a5333aab3eb5ee34ae23a3e516366d5ac2a41775b49e1af"
+    }
+  },
+  "tests": {
+    "passed": 129,
+    "failed": 0,
+    "skipped": 0,
+    "wall_seconds": 13.16
+  }
+}

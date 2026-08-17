@@ -1,0 +1,8 @@
+reference_roots:
+  feasibility: /absolute/read-only/path/to/rank-relational-clustering-feasibility
+  air: /absolute/read-only/path/to/AIR-relational-benchmark
+
+manifests:
+  feasibility: data/manifests/feasibility_datasets.json
+  air: data/manifests/air_datasets.json
+  evaluation_labels: data/manifests/evaluation_labels.json

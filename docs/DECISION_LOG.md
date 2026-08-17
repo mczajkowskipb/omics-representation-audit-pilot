@@ -49,6 +49,38 @@
     a claim of full Gate B or external validity. Target regret, score/target
     correlation, the full 630-pair grid and real transfers remain required.
 
+## Frozen for PILOT-012--015
+
+20. Reference adapters accept only an exact upstream commit and exact file
+    size/SHA-256. Their fitting manifests contain X paths only; y paths exist
+    solely in an evaluation-owned manifest.
+21. The primary grid is exactly 630 pairs: 18 signal cells and 3 NULL cells,
+    each with 30 replicates. The three shift levels are paired views of one
+    source cohort, so 210 source audits feed 630 independently frozen target
+    assignments.
+22. The count of 630 in the protocol does not contain a margin axis. Primary
+    execution therefore freezes margin `0.00`; margin `0.02` is not selected
+    retrospectively after target evaluation.
+23. Gate B target ARI/regret uses a forced nearest-medoid assignment for all
+    target samples, isolating representation quality. Rejection coverage is
+    reported separately and cannot improve the ARI used by the gate.
+24. Target rejection is source-fitted: cluster radius is the source
+    within-cluster distance 95th percentile, confidence is the source 5th
+    percentile of the normalized nearest/second-medoid gap, and minimum
+    feature/relation coverage is `0.80`.
+25. Real transfer uses the 22,277 probe IDs common to GSE10072 and GSE19804.
+    MAD selection of 200 probes, preprocessing, relation screening, hybrid
+    scales, method selection and medoids use source values only.
+26. K=2 for both lung directions is the predeclared binary benchmark control,
+    not a value inferred from evaluation labels. NULL calibration is separately
+    matched to K=2 and source sample sizes 107 and 120 with 30 replicates each.
+27. Gate B is GO. Gate C is STOP because forward regret is
+    `0.10528419284859625`, above the frozen reverse-direction allowance of
+    `0.10`; no post-label retuning or threshold relaxation is permitted.
+28. PILOT-016, direct regions and anchors remain blocked pending an explicit
+    decision on the Gate C STOP. The current result must not be presented as a
+    passed external-transfer gate.
+
 ## Deferred scientific risk
 
 A stable technical nuisance can be statistically indistinguishable from a
@@ -60,3 +92,9 @@ The GSE10072/GSE19804 transfer is also a combined biological and technical
 stress test, because their normal-tissue definitions differ and GSE19804 has a
 paired tumour/adjacent-normal design. This must be reflected in the later Gate C
 interpretation.
+
+The working AIR checkout discovered during adapter validation contained
+pre-existing truncated copies of GSE17920 and GSE27272. All accepted adapter
+checks used a separate clean detached snapshot at commit
+`2dee739f6ee5e001ef1be76df2eb753ca389adb3`; neither reference repository was
+modified.

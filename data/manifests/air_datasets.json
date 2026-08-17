@@ -1,0 +1,16 @@
+{
+  "schema": "AIRDataManifest/v1",
+  "repository": "AIR-relational-benchmark",
+  "git_commit": "2dee739f6ee5e001ef1be76df2eb753ca389adb3",
+  "label_free": true,
+  "datasets": {
+    "GDS2771": {"x_path": "data/final/GDS2771/X_features_x_samples.csv", "x_size_bytes": 33908001, "x_sha256": "8c6b4cb8c581b5d2a11c99267b689a4abca73d5240bfca7ac62f038e9a40ae55", "n_samples": 192, "n_features": 22283, "platform_id": "GPL96"},
+    "GSE10072": {"x_path": "data/final/GSE10072/X_features_x_samples.csv", "x_size_bytes": 28591087, "x_sha256": "9c7444c6034edc53747c7134ea285b1005b5fd0437af984983ad9abbf6db656d", "n_samples": 107, "n_features": 22283, "platform_id": "GPL96"},
+    "GSE17920": {"x_path": "data/final/GSE17920/X_features_x_samples.csv", "x_size_bytes": 49618513, "x_sha256": "70db0088017ee66632dda6cc0312f390123a34556d223389edea39847c6c5043", "n_samples": 130, "n_features": 54675, "platform_id": "GPL570"},
+    "GSE19804": {"x_path": "data/final/GSE19804/X_features_x_samples.csv", "x_size_bytes": 52349572, "x_sha256": "bcc56820d8b01e22076ec6797c711fa16c0efa5c9fcb996379c3bcc408bedacf", "n_samples": 120, "n_features": 54675, "platform_id": "GPL570"},
+    "GSE25837": {"x_path": "data/final/GSE25837/X_features_x_samples.csv", "x_size_bytes": 14261673, "x_sha256": "b22443cd081b1d09d0d761e69f95ca4c0b6e45464b0e3fdb14b5d1cc80ae48c3", "n_samples": 93, "n_features": 18630, "platform_id": "AIR_18630_FEATURES"},
+    "GSE27272": {"x_path": "data/final/GSE27272/X_features_x_samples.csv", "x_size_bytes": 53675836, "x_sha256": "4310a665c221a1589e3a61b74c1cb1d849f0aa6f0a56c50737668f876af59758", "n_samples": 183, "n_features": 24526, "platform_id": "AIR_24526_FEATURES"},
+    "GSE3365": {"x_path": "data/final/GSE3365/X_features_x_samples.csv", "x_size_bytes": 28337609, "x_sha256": "300c20a06516b7bf1cfa24eda9156fac6f8cfbfc69f0301c543d50910ff4df9d", "n_samples": 127, "n_features": 22283, "platform_id": "GPL96"},
+    "GSE6613": {"x_path": "data/final/GSE6613/X_features_x_samples.csv", "x_size_bytes": 11817487, "x_sha256": "bdf56815748d14c20d750939dcd3f6c6fa92c122554b69e5a4c54b818b4eb5ec", "n_samples": 105, "n_features": 22283, "platform_id": "GPL96"}
+  }
+}

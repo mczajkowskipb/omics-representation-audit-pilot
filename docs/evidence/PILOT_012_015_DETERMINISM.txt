@@ -1,0 +1,23 @@
+PILOT-012--015 determinism and integrity evidence
+
+Full 630-pair prelabel scientific tree (runtime excluded):
+6f84a699e895819fb0beae3012712d1f80f4581e68cf25b976e09e7f764e6667
+
+Full 630-pair evaluation tree, before and after a second complete read/evaluation:
+daf6378a73c42f7d6dbb0ebdbebe7f5484aee0a6bff39e9a69a572dbf603a975
+daf6378a73c42f7d6dbb0ebdbebe7f5484aee0a6bff39e9a69a572dbf603a975
+
+Gate B summary, before and after rerun:
+dedd2af3168909257a2a4d6b4b1939c24cd0494e07f4bc2a32cb8f499842603f
+dedd2af3168909257a2a4d6b4b1939c24cd0494e07f4bc2a32cb8f499842603f
+
+Real NULL calibration plus both prelabel transfer trees, before and after rerun:
+4b17e30afdf4f4a0644eae78ca20923c2acfc310ca45f270680fbf14f89a37c5
+4b17e30afdf4f4a0644eae78ca20923c2acfc310ca45f270680fbf14f89a37c5
+
+Gate C summary, before and after rerun:
+f6f380cc6d549a03ccf2832aaedf84a21709b8d01cbf2bfd3ca14d402cf9bccd
+f6f380cc6d549a03ccf2832aaedf84a21709b8d01cbf2bfd3ca14d402cf9bccd
+
+Full test suite after the real prelabel markers existed:
+129 passed in 13.16 s

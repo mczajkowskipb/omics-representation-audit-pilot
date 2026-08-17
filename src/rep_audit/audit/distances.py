@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from types import MappingProxyType
+from collections.abc import Iterable
 from typing import Mapping
 
 import numpy as np
@@ -130,12 +131,23 @@ def _safe_add(
 def build_source_representations(
     source: DatasetBundle,
     config: AuditConfig,
+    *,
+    allowed_feature_ids: Iterable[object] | None = None,
 ) -> SourceRepresentationSet:
     """Fit all representation artifacts using only the complete source cohort."""
 
+    allowed = None if allowed_feature_ids is None else tuple(str(item) for item in allowed_feature_ids)
+    effective_budget = (
+        config.feature_budget
+        if allowed is None
+        else min(config.feature_budget, len(allowed))
+    )
+    if effective_budget < 2:
+        raise ValueError("at least two source/target-common features are required")
     preprocessing = fit_source_preprocessing(
         source,
-        feature_budget=config.feature_budget,
+        feature_budget=effective_budget,
+        allowed_feature_ids=allowed,
         protocol_version=config.protocol_version,
     )
     selected = preprocessing.selected_feature_ids

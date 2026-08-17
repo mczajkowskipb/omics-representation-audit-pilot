@@ -93,6 +93,28 @@ class MethodAuditResult:
             "perturbation_failures": self.perturbation_failures,
         }
 
+    @classmethod
+    def from_dict(cls, value: Mapping[str, Any]) -> "MethodAuditResult":
+        rows = tuple(value["assignments"])
+        return cls(
+            method_id=str(value["method_id"]),
+            family=str(value["family"]),
+            prediction_strength=float(value["prediction_strength"]),
+            cluster_stability=float(value["cluster_stability"]),
+            perturbation_invariance=float(value["perturbation_invariance"]),
+            representation_stability=float(value["representation_stability"]),
+            nondegeneracy_score=float(value["nondegeneracy_score"]),
+            nondegenerate=bool(value["nondegenerate"]),
+            min_cluster_fraction=float(value["min_cluster_fraction"]),
+            cluster_entropy=float(value["cluster_entropy"]),
+            q_score=float(value["q_score"]),
+            medoid_ids=tuple(str(item) for item in value["medoid_ids"]),
+            sample_ids=tuple(str(row["sample_id"]) for row in rows),
+            assignments=tuple(int(row["cluster"]) for row in rows),
+            complexity=int(value["complexity"]),
+            perturbation_failures=int(value["perturbation_failures"]),
+        )
+
 
 @dataclass(frozen=True, slots=True)
 class SourceAuditReport:
@@ -141,3 +163,28 @@ class SourceAuditReport:
 
     def save(self, path: str | Path) -> None:
         atomic_write_bytes(path, self.to_json_bytes())
+
+    @classmethod
+    def from_dict(cls, value: Mapping[str, Any]) -> "SourceAuditReport":
+        if value.get("schema") != "SourceAuditReport/v1":
+            raise ValueError("not a SourceAuditReport/v1 object")
+        return cls(
+            source_dataset_id=str(value["source_dataset_id"]),
+            source_fingerprint=str(value["source_fingerprint"]),
+            config_sha256=str(value["config_sha256"]),
+            config=dict(value["config"]),
+            representation_manifest=dict(value["representation_manifest"]),
+            methods=tuple(
+                sorted(
+                    (MethodAuditResult.from_dict(item) for item in value["methods"]),
+                    key=lambda item: item.method_id,
+                )
+            ),
+            failures=dict(value["failures"]),
+        )
+
+    @classmethod
+    def load(cls, path: str | Path) -> "SourceAuditReport":
+        import json
+
+        return cls.from_dict(json.loads(Path(path).read_text(encoding="utf-8")))

@@ -1,0 +1,35 @@
+{
+  "schema": "FeasibilityDataManifest/v1",
+  "repository": "rank-relational-clustering-feasibility",
+  "git_commit": "dc97680a1e944e74924b5e7b151e0c27d5655f22",
+  "label_free": true,
+  "datasets": {
+    "DLBCL": {
+      "x_path": "data/DLBCL/X.csv",
+      "x_size_bytes": 4338681,
+      "x_sha256": "b5b33537c0193c91e52aae6eda80d774468a0d11aadc506cdc7c738414ba06cf",
+      "n_samples": 194,
+      "n_features": 2294,
+      "first_column_is_sample_id": false,
+      "platform_id": "DLBCL_2294_FEATURES"
+    },
+    "colon": {
+      "x_path": "data/colon/X.csv",
+      "x_size_bytes": 855395,
+      "x_sha256": "f3d7e4e2080d738012ea20f06505a8205d04e78522af678775b7ea49d805af32",
+      "n_samples": 62,
+      "n_features": 2000,
+      "first_column_is_sample_id": true,
+      "platform_id": "COLON_2000_FEATURES"
+    },
+    "golub": {
+      "x_path": "data/golub/X.csv",
+      "x_size_bytes": 2185968,
+      "x_sha256": "d662c877bf244a392a689b8cf2d20f06d2951504534b3e43285bc41468818c8c",
+      "n_samples": 72,
+      "n_features": 7129,
+      "first_column_is_sample_id": true,
+      "platform_id": "AFFY_HUGENEFL"
+    }
+  }
+}

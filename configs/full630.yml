@@ -1,0 +1,38 @@
+protocol_version: "1.0"
+base_seed: 20260817
+replicates_per_cell: 30
+
+simulation:
+  n_source: 180
+  n_target: 180
+  p: 200
+  k: 3
+  informative_features: 30
+
+audit:
+  feature_budget: 200
+  relation_budget: 2000
+  resamples: 20
+  margin: 0.00
+  alphas: [0.25, 0.50, 0.75]
+  perturbation_level: moderate
+  min_cluster_fraction: 0.10
+  relation_coverage_threshold: 0.90
+  relation_entropy_threshold: 0.05
+  relation_stability_threshold: 0.80
+  relation_screen_perturbations: 3
+
+selector:
+  null_quantile: 0.90
+  minimum_hybrid_gain: 0.02
+  equivalence_margin: 0.02
+  minimum_decision_frequency: 0.60
+
+transfer:
+  minimum_feature_coverage: 0.80
+  minimum_relation_coverage: 0.80
+  evaluation_assignment: forced_all_samples
+
+runtime:
+  max_workers: 8
+  threads_per_job: 1

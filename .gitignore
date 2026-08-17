@@ -13,3 +13,5 @@ data/*
 !data/README.md
 !data/manifests/
 !data/manifests/.gitkeep
+!data/manifests/*.json
+configs/datasets.local.yml

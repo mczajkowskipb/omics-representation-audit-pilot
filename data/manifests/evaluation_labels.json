@@ -1,0 +1,21 @@
+{
+  "schema": "EvaluationLabelManifest/v1",
+  "evaluation_only": true,
+  "repositories": {
+    "air": {"git_commit": "2dee739f6ee5e001ef1be76df2eb753ca389adb3"},
+    "feasibility": {"git_commit": "dc97680a1e944e74924b5e7b151e0c27d5655f22"}
+  },
+  "datasets": {
+    "DLBCL": {"repository": "feasibility", "y_path": "data/DLBCL/y.csv", "y_size_bytes": 1363, "y_sha256": "ed46e9eed189555d537a6a2f4ee94d9e39f47935e726dbff449cb440a4c1b823", "alignment": "row_order", "label_column": "y"},
+    "colon": {"repository": "feasibility", "y_path": "data/colon/y.csv", "y_size_bytes": 315, "y_sha256": "f08dc4bc07dd02378db9daf7386efa5f394f0e643576a0226e46267969268af4", "alignment": "row_order", "label_column": "y"},
+    "golub": {"repository": "feasibility", "y_path": "data/golub/y.csv", "y_size_bytes": 509, "y_sha256": "b759161741b5f7ef9733d745273b7914c9d8066c5750c2e40f44283096be6fbd", "alignment": "row_order", "label_column": "y"},
+    "GDS2771": {"repository": "air", "y_path": "data/final/GDS2771/y.csv", "y_size_bytes": 9869, "y_sha256": "f8574a8f897ef1e94826b8ff3eeeba5e437ade4b7f52f89379f712e6ba761caa", "alignment": "sample_id", "label_column": "class_label"},
+    "GSE10072": {"repository": "air", "y_path": "data/final/GSE10072/y.csv", "y_size_bytes": 6685, "y_sha256": "ca8a60f25ddf0c8543095dee1ba3add519835757d1ee11634bc7026e2a359b95", "alignment": "sample_id", "label_column": "class_label"},
+    "GSE17920": {"repository": "air", "y_path": "data/final/GSE17920/y.csv", "y_size_bytes": 6772, "y_sha256": "5659d11ecdcf6b301d5eb4348a2d0b99d56cd33021216e0e72a7792840c1615f", "alignment": "sample_id", "label_column": "class_label"},
+    "GSE19804": {"repository": "air", "y_path": "data/final/GSE19804/y.csv", "y_size_bytes": 6793, "y_sha256": "9df958767d81f28facc631fd375e18f0d8b0887ba57254e87ad36203d5f4cdd5", "alignment": "sample_id", "label_column": "class_label"},
+    "GSE25837": {"repository": "air", "y_path": "data/final/GSE25837/y.csv", "y_size_bytes": 5375, "y_sha256": "9f324d10315800cdb65da4e83c2cb4ab1a8ff90c568a3569f571de5400f8f6ff", "alignment": "sample_id", "label_column": "class_label"},
+    "GSE27272": {"repository": "air", "y_path": "data/final/GSE27272/y.csv", "y_size_bytes": 10430, "y_sha256": "978606c53d0c00b8f5c618ac3280aeabdebbbb7c6211897454115cccdb596f51", "alignment": "sample_id", "label_column": "class_label"},
+    "GSE3365": {"repository": "air", "y_path": "data/final/GSE3365/y.csv", "y_size_bytes": 8408, "y_sha256": "6902874129664b0ba768f2b6e6824fc9c81d429dbea6c29647efbcd6f8295bb9", "alignment": "sample_id", "label_column": "class_label"},
+    "GSE6613": {"repository": "air", "y_path": "data/final/GSE6613/y.csv", "y_size_bytes": 7102, "y_sha256": "fba053b1c44b32b499aa60de210a910453e5b69802150be696dbf5a67e1b7c3b", "alignment": "sample_id", "label_column": "class_label"}
+  }
+}

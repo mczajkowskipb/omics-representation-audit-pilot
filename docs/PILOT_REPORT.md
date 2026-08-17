@@ -1,7 +1,9 @@
 # PILOT-001--006 acceptance report
 
 > This is the historical core report. The current continuation and accepted
-> 40-dataset smoke result are in `PILOT_007_011_REPORT.md`.
+> 40-dataset smoke result are in `PILOT_007_011_REPORT.md`. The completed
+> adapters, full 630-pair Gate B, real transfers and formal Gate C STOP are in
+> `PILOT_012_015_REPORT.md`.
 
 Date: 2026-08-11
 
