@@ -1,5 +1,8 @@
 # PILOT-001--006 acceptance report
 
+> This is the historical core report. The current continuation and accepted
+> 40-dataset smoke result are in `PILOT_007_011_REPORT.md`.
+
 Date: 2026-08-11
 
 Protocol: `SONATA BIS PILOT PROTOCOL v1.0`

@@ -11,6 +11,7 @@ CORE_DIRECTORIES = (
     "representations",
     "distances",
     "clustering",
+    "audit",
     "io",
 )
 

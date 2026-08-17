@@ -22,9 +22,11 @@ def test_project_dependencies_exclude_forbidden_families() -> None:
         assert forbidden not in dependencies
 
 
-def test_protocol_scope_does_not_have_future_modules() -> None:
+def test_protocol_scope_stops_at_pilot_011() -> None:
     package = ROOT / "src" / "rep_audit"
     assert not (package / "anchors.py").exists()
     assert not (package / "clustering" / "direct_regions.py").exists()
-    assert not (package / "simulation").exists()
-    assert not (package / "audit").exists()
+    assert not (package / "transfer").exists()
+    assert not (package / "regions").exists()
+    assert not (package / "data" / "feasibility_adapter.py").exists()
+    assert not (package / "data" / "air_adapter.py").exists()

@@ -1,0 +1,6 @@
+Compared scientific artifacts per run: 242
+Compared: summary, NULL calibration, and for each of 40 jobs config, metrics,
+assignments, audit, selection, and DONE.
+Excluded by design: runtime.json.
+Mismatches: 0
+Aggregate tree SHA-256: 437f5132701483365834e1bcc5bd01e068e59927485a84ca328202717b86a010

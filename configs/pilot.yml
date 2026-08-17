@@ -31,6 +31,11 @@ relations:
   margins: [0.00, 0.02]
   sensitivity_margin: 0.05
   missing_policy: explicit_mask
+  primary_relation_budget: 2000
+  sensitivity_relation_budgets: [500, 5000]
+  coverage_strictly_above: 0.90
+  normalized_entropy_at_least: 0.05
+  perturbation_stability_at_least: 0.80
 
 hybrid:
   alphas: [0.25, 0.50, 0.75]
@@ -40,3 +45,17 @@ clustering:
   engine: deterministic_pam_build_swap
   tie_break: stable_sample_id
   improvement_tolerance: 1.0e-12
+
+audit:
+  quality: min_prediction_strength_cluster_stability_perturbation_invariance
+  primary_resamples: 20
+  smoke_resamples: 5
+  min_cluster_fraction: 0.10
+
+selector:
+  null_quantile: 0.90
+  null_quantile_method: higher
+  multiple_testing_calibration: cross_fitted_max_method_excess
+  minimum_hybrid_gain: 0.02
+  equivalence_margin: 0.02
+  uncertain_below_frequency: 0.60

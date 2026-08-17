@@ -1,0 +1,39 @@
+protocol_version: "1.0"
+base_seed: 20260817
+replicates_per_cell: 5
+
+simulation:
+  n_source: 90
+  n_target: 90
+  p: 200
+  k: 3
+  informative_features: 30
+
+audit:
+  feature_budget: 200
+  relation_budget: 500
+  resamples: 5
+  margin: 0.00
+  alphas: [0.25, 0.50, 0.75]
+  perturbation_level: moderate
+  min_cluster_fraction: 0.10
+  relation_coverage_threshold: 0.90
+  relation_entropy_threshold: 0.05
+  relation_stability_threshold: 0.80
+  relation_screen_perturbations: 3
+
+selector:
+  null_quantile: 0.90
+  minimum_hybrid_gain: 0.02
+  equivalence_margin: 0.02
+  minimum_decision_frequency: 0.60
+
+cells:
+  - {regime: VALUE, signal: moderate, shift: moderate}
+  - {regime: VALUE, signal: strong, shift: strong}
+  - {regime: RELATIONAL, signal: moderate, shift: moderate}
+  - {regime: RELATIONAL, signal: strong, shift: strong}
+  - {regime: HYBRID, signal: moderate, shift: moderate}
+  - {regime: HYBRID, signal: strong, shift: strong}
+  - {regime: "NULL", signal: none, shift: none}
+  - {regime: "NULL", signal: none, shift: strong}
