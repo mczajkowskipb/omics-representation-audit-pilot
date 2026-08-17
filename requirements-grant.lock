@@ -1,0 +1,5 @@
+# Exact direct reporting dependencies used for the 2026-08-17 grant package.
+matplotlib==3.10.8
+pypdf==6.10.0
+reportlab==4.4.9
+

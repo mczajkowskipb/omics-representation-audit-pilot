@@ -4,6 +4,13 @@
   "pilot_commit": "9adae889601486ffb5e9e29f29afe16cc1e1e698",
   "primary_evidence": "docs/evidence/PILOT_019_VALIDATION.json",
   "grant_documents": [
+    "docs/grant/README_FIRST_PL.md",
+    "docs/grant/SONATA_BIS16_DEFAULTS_FROZEN.md",
+    "docs/grant/SONATA_BIS16_DATASET_AUDIT.md",
+    "docs/grant/SONATA_BIS16_SHORT_DESCRIPTION_EN.md",
+    "docs/grant/SONATA_BIS16_DETAILED_DESCRIPTION_EN_DRAFT.md",
+    "docs/grant/SONATA_BIS16_POPULAR_SUMMARY_PL.md",
+    "docs/grant/SONATA_BIS16_POPULAR_SUMMARY_EN.md",
     "docs/grant/SONATA_BIS16_SCIENTIFIC_CORE_PL.md",
     "docs/grant/SONATA_BIS16_OSF_STARTER_PL_EN.md",
     "docs/grant/SONATA_BIS16_PRELIMINARY_RESULTS_EN.md",
