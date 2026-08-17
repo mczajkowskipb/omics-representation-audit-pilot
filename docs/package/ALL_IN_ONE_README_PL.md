@@ -10,6 +10,12 @@ pilota, dowody, raporty i dokumenty wniosku. Najwygodniej zacząć od katalogu
   status i dokładne następne kroki;
 - `01_START_HERE/SONATA_BIS16_COMPLETION_REPORT.md` - raport wykonanych zmian,
   testów, ryzyk i odstępstw;
+- `01_START_HERE/GITHUB_SERVER_GUIDE_PL.md` - dokładna instrukcja publikacji
+  repozytorium, instalacji, konfiguracji danych i walidacji na serwerze;
+- `01_START_HERE/RELEASE_FILES_EXACT_PL.md` - dokładne nazwy, rozmiary i sumy
+  SHA-256 plików danej wersji;
+- `01_START_HERE/FILES_AND_ARCHIVES_MANIFEST_PL.md` - wykaz artefaktów, które
+  należy zachować;
 - `02_GRANT_PDFS/` - opis skrócony EN, opis szczegółowy EN, streszczenie
   popularnonaukowe PL i EN;
 - `03_PILOT_REPORT/` - końcowy raport pilota w PDF;
@@ -37,8 +43,7 @@ pilota, dowody, raporty i dokumenty wniosku. Najwygodniej zacząć od katalogu
 
 ## Najbliższe zadanie
 
-Pilot nie wymaga kolejnego „ratowania”. Następnym blokiem jest uzupełnienie
-wniosku o prawdziwe dane osób, budżet, osiągnięcia PI, dane jednostki, DMP,
-etykę i potwierdzoną współpracę, a następnie kontrola zgodności z aktualnym
-formularzem OSF.
-
+Pilot nie wymaga kolejnego „ratowania”. Po zamknięciu dokumentów naukowych
+pozostają czynności operacyjne: publikacja repozytorium, dołączenie paczki jako
+GitHub Release lub archiwum OSF oraz niezależna walidacja środowiska na serwerze.
+Nie są one nowymi eksperymentami i nie zmieniają żadnej bramki.

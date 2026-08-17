@@ -39,9 +39,23 @@ CUDA and a portal remain outside scope.
 python -m venv .venv
 .venv/bin/python -m pip install --upgrade pip
 .venv/bin/python -m pip install -r requirements.lock
+.venv/bin/python -m pip install -r requirements-grant.lock
 .venv/bin/python -m pip install --no-deps -e .
 PYTHON_BIN=.venv/bin/python bash scripts/01_verify_core.sh
 ```
+
+`requirements-grant.lock` is required for the complete test suite and for
+deterministic PDF regeneration. A minimal scientific installation that does not
+run grant/PDF tests may omit it, but such a run is not the final 145-test
+acceptance configuration recorded at closeout.
+
+Polish operational instructions are available in:
+
+- `docs/GITHUB_SERVER_GUIDE_PL.md` - publication on GitHub, clean server setup,
+  reference snapshots, archived-result validation and optional recomputation;
+- `docs/FILES_AND_ARCHIVES_MANIFEST_PL.md` - exact stable filenames, generated
+  release-name patterns and the distinction between required and optional
+  artifacts.
 
 The extended command additionally runs the frozen 40-dataset smoke grid and
 refuses to overwrite an existing result directory:
@@ -111,6 +125,21 @@ than manually copying result values:
 The package contains a Polish scientific core, an OSF-oriented PL/EN starter,
 an insertion-ready English preliminary-results section and explicit claim
 boundaries. It does not execute or claim results for PILOT-016--018.
+
+## Release handoff
+
+After committing a documentation or software release, a deterministic handoff
+package can be built outside the repository with:
+
+```bash
+.venv/bin/python scripts/12_build_handoff_package.py \
+  --results-archive /absolute/path/to/omics-representation-audit-pilot-results-9adae88.tar.gz \
+  --output-dir /absolute/path/to/release-output
+```
+
+The builder refuses a dirty tracked worktree, verifies the frozen results
+archive SHA-256, creates a source snapshot, full Git bundle, evidence archive,
+exact release manifest, internal checksums and one all-in-one ZIP.
 
 ## Leakage boundary
 
