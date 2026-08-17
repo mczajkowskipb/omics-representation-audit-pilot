@@ -1,0 +1,46 @@
+protocol_version: "1.0"
+base_seed: 20260817
+
+# K=2 is a frozen benchmark control for these eleven binary reference tasks.
+# Class membership remains physically unavailable to the prelabel phase.
+datasets:
+  - {dataset_id: golub, repository: feasibility, display_id: Golub, k: 2}
+  - {dataset_id: colon, repository: feasibility, display_id: Colon, k: 2}
+  - {dataset_id: DLBCL, repository: feasibility, display_id: DLBCL, k: 2}
+  - {dataset_id: GDS2771, repository: air, display_id: GDS2771, k: 2}
+  - {dataset_id: GSE10072, repository: air, display_id: GSE10072, k: 2}
+  - {dataset_id: GSE17920, repository: air, display_id: GSE17920, k: 2}
+  - {dataset_id: GSE19804, repository: air, display_id: GSE19804, k: 2}
+  - {dataset_id: GSE25837, repository: air, display_id: GSE25837, k: 2}
+  - {dataset_id: GSE27272, repository: air, display_id: GSE27272, k: 2}
+  - {dataset_id: GSE3365, repository: air, display_id: GSE3365, k: 2}
+  - {dataset_id: GSE6613, repository: air, display_id: GSE6613, k: 2}
+
+audit:
+  k: 2
+  feature_budget: 200
+  relation_budget: 2000
+  resamples: 20
+  margin: 0.00
+  alphas: [0.25, 0.50, 0.75]
+  perturbation_level: moderate
+  min_cluster_fraction: 0.10
+  relation_coverage_threshold: 0.90
+  relation_entropy_threshold: 0.05
+  relation_stability_threshold: 0.80
+  relation_screen_perturbations: 3
+
+null_calibration:
+  replicates: 30
+  p: 200
+  informative_features: 30
+  quantile: 0.90
+  minimum_hybrid_gain: 0.02
+
+selector:
+  equivalence_margin: 0.02
+  minimum_decision_frequency: 0.60
+
+runtime:
+  max_workers: 8
+  threads_per_job: 1

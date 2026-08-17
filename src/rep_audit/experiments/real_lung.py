@@ -82,12 +82,20 @@ def _null_report_worker(
     os.environ["OPENBLAS_NUM_THREADS"] = "1"
     os.environ["MKL_NUM_THREADS"] = "1"
     output_path = Path(output_path_text)
-    if output_path.is_file():
-        return str(output_path)
     calibration = config["null_calibration"]
     simulation_seed = stable_seed(
         int(config["base_seed"]), "real_null_calibration", n_samples, replicate
     )
+    expected_config = _audit_config(
+        config, seed=stable_seed(simulation_seed, "audit")
+    )
+    if output_path.is_file():
+        _validate_null_report(
+            SourceAuditReport.load(output_path),
+            n_samples=n_samples,
+            expected_config=expected_config,
+        )
+        return str(output_path)
     specification = SimulationSpec(
         regime="NULL",
         signal="none",
@@ -105,11 +113,37 @@ def _null_report_worker(
         generated = generate_simulation(specification)
         report = run_source_audit(
             generated.source,
-            _audit_config(config, seed=stable_seed(simulation_seed, "audit")),
+            expected_config,
         )
+    _validate_null_report(
+        report,
+        n_samples=n_samples,
+        expected_config=expected_config,
+    )
     output_path.parent.mkdir(parents=True, exist_ok=True)
     report.save(output_path)
     return str(output_path)
+
+
+def _validate_null_report(
+    report: SourceAuditReport,
+    *,
+    n_samples: int,
+    expected_config: AuditConfig,
+) -> None:
+    """Reject a stale or mismatched cached NULL report before calibration."""
+
+    if report.config_sha256 != expected_config.sha256():
+        raise ValueError("cached NULL report uses a different audit configuration")
+    if sha256_bytes(canonical_json_bytes(dict(report.config))) != expected_config.sha256():
+        raise ValueError("cached NULL report configuration payload is inconsistent")
+    if not report.methods:
+        raise ValueError("cached NULL report contains no methods")
+    if any(len(method.sample_ids) != n_samples for method in report.methods):
+        raise ValueError("cached NULL report has the wrong sample size")
+    reference_ids = set(report.methods[0].sample_ids)
+    if any(set(method.sample_ids) != reference_ids for method in report.methods):
+        raise ValueError("cached NULL report methods have inconsistent sample IDs")
 
 
 def _ensure_calibrations(
@@ -151,6 +185,20 @@ def _ensure_calibrations(
             SourceAuditReport.load(directory / "reports" / f"null_{replicate:03d}.json")
             for replicate in range(replicates)
         ]
+        for replicate, report in enumerate(reports):
+            simulation_seed = stable_seed(
+                int(config["base_seed"]),
+                "real_null_calibration",
+                n_samples,
+                replicate,
+            )
+            _validate_null_report(
+                report,
+                n_samples=n_samples,
+                expected_config=_audit_config(
+                    config, seed=stable_seed(simulation_seed, "audit")
+                ),
+            )
         artifact = calibrate_null(
             reports,
             quantile=float(config["null_calibration"]["quantile"]),

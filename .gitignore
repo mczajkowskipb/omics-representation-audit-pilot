@@ -7,6 +7,7 @@ __pycache__/
 htmlcov/
 build/
 dist/
+tmp/
 results/*
 !results/README.md
 data/*

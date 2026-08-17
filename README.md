@@ -2,7 +2,8 @@
 
 Deterministic Python reference implementation for the source-only
 representation audit in the SONATA BIS pilot. The repository implements the
-approved scope **PILOT-001--015**.
+approved implementation scope **PILOT-001--015** plus the protocol-required
+eleven real within-dataset audits and the **PILOT-019--020** closeout.
 
 ## The idea in plain language
 
@@ -63,6 +64,11 @@ The accepted smoke result is documented in `docs/PILOT_007_011_REPORT.md`.
 The completed full grid, repository adapters, two real transfers and Gate B/C
 decisions are documented in `docs/PILOT_012_015_REPORT.md`.
 
+The final closeout, including all eleven within-dataset audits, integrity
+validation, grant-ready tables/figures and the formal decision not to run
+PILOT-016--018 after Gate C STOP, is documented in
+`docs/PILOT_FINAL_REPORT.md`.
+
 The full label-free simulation phase and its separately gated evaluation are:
 
 ```bash
@@ -75,6 +81,21 @@ After Gate B is GO, the two real directions use the same two-phase boundary:
 ```bash
 .venv/bin/python scripts/06_run_real_lung.py --phase prelabel --max-workers 8
 .venv/bin/python scripts/06_run_real_lung.py --phase evaluate
+```
+
+The eleven real within-dataset audits use the same physical prelabel/evaluation
+boundary:
+
+```bash
+.venv/bin/python scripts/07_run_real_within.py --phase prelabel --max-workers 8
+.venv/bin/python scripts/07_run_real_within.py --phase evaluate
+```
+
+Final validation and reporting are reproducible with:
+
+```bash
+.venv/bin/python scripts/08_validate_and_collect.py --run-tests
+.venv/bin/python scripts/09_generate_closeout_report.py
 ```
 
 ## Leakage boundary

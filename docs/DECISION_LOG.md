@@ -81,6 +81,23 @@
     decision on the Gate C STOP. The current result must not be presented as a
     passed external-transfer gate.
 
+## Frozen for the closeout block
+
+29. The protocol-required within-dataset analysis covers exactly Golub, Colon,
+    DLBCL and the eight AIR datasets. K=2 is the predeclared binary benchmark
+    control for every dataset; membership labels remain unavailable until all
+    eleven audit decisions and assignments have immutable markers.
+30. Real within-dataset NULL calibration is K- and exact-sample-size-aware,
+    using 30 NULL reports for each of the eleven distinct sample sizes. Cached
+    reports must match the complete audit-configuration hash and sample count.
+31. Within-dataset ARI/NMI is descriptive, not external validation and not a
+    new GO/STOP gate. Stable unsupervised structure may be unrelated to the
+    available clinical label. These results cannot rescue or modify Gate C.
+32. Gate C remains STOP without threshold relaxation or target retuning.
+    PILOT-016--018 are closed as `NOT_RUN_BLOCKED_BY_GATE_C_STOP`; PILOT-019
+    validates and collects the completed evidence, and PILOT-020 reports the
+    mixed result without claiming that direct regions or anchors were tested.
+
 ## Deferred scientific risk
 
 A stable technical nuisance can be statistically indistinguishable from a
@@ -98,3 +115,9 @@ pre-existing truncated copies of GSE17920 and GSE27272. All accepted adapter
 checks used a separate clean detached snapshot at commit
 `2dee739f6ee5e001ef1be76df2eb753ca389adb3`; neither reference repository was
 modified.
+
+At closeout, that detached AIR snapshot also contained one untracked temporary
+partial file, `data/final/GSE19804/.X_features_x_samples.csv.Bceve0`, timestamped
+before the closeout run. It was preserved rather than deleted. Git reported no
+tracked changes, and the adapter accepted only the tracked GSE19804 matrix with
+the manifest-pinned size and SHA-256; the untracked file was not read.
