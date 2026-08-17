@@ -1,0 +1,10 @@
+item,status,basis
+Gate A,GO,"correctness, determinism, no leakage"
+Gate B,GO,all five frozen simulation criteria passed
+Real within,DESCRIPTIVE,11/11 frozen before labels; not an external gate
+Gate C,STOP,one regret 0.105284 > 0.10
+PILOT-016,NOT RUN,blocked by Gate C STOP
+PILOT-017,NOT RUN,blocked by Gate C STOP
+PILOT-018,NOT RUN,blocked by Gate C STOP
+PILOT-019,COMPLETE,full integrity validation
+PILOT-020,COMPLETE,"tables, six figures, report and grant text"

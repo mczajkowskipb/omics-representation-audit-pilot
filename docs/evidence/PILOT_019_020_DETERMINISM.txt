@@ -1,0 +1,25 @@
+PILOT-019/020 determinism and integrity evidence
+
+Within-dataset scientific tree, before complete rerun:
+47ce572d4db1ff6cf77fd60b8202e04c6eadcfc895a5a2a5c3454ea17e1801af
+
+Within-dataset scientific tree, after complete rerun:
+47ce572d4db1ff6cf77fd60b8202e04c6eadcfc895a5a2a5c3454ea17e1801af
+
+PILOT-020 generated artifacts compared per run: 15
+PILOT-020 hash mismatches after two complete generations: 0
+
+Final invariant PDF SHA-256:
+1b6575e8835a712d8fb50f7878c3b5b5bbac2f25189f1998ac135df7ebd2f49e
+
+Final PDF visual QA:
+8 A4 pages rendered with Poppler and inspected; no clipping, overlap,
+missing-glyph, broken-table or footer defects observed.
+
+Acceptance suite:
+138 passed, 0 failed
+compileall: passed
+pip check: No broken requirements found.
+
+Validated source commit:
+c70f83304ff1c5957b5b762c084d8fd984c6aa8e

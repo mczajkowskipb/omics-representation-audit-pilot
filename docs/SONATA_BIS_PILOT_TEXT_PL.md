@@ -1,0 +1,7 @@
+# Krótki tekst wynikowy do wniosku SONATA BIS
+
+W pilotażu opracowano deterministyczny, source-only Representation Audit, który przed grupowaniem porównuje reprezentację wartościową, rankingowo-relacyjną i hybrydową przy wspólnym algorytmie PAM oraz dopuszcza wynik NO_STABLE_STRUCTURE. Preprocessing, dobór cech, relacji, wag i medoidów odbywały się bez etykiet; etykiety udostępniano dopiero po zapisaniu kompletnych przypisań.
+
+W kontrolowanej siatce 630 par source-target audyt poprawnie wskazał rodzinę reprezentacji w 93.3% replikacji, przy medianie target-ARI regret 0.000 i korelacji source-target Spearmana 0.854; wszystkie zamrożone kryteria Gate B zostały spełnione. W 11 heterogenicznych zbiorach ekspresyjnych wybór był w granicy 0,05 ARI od retrospektywnego oracle w 81.8% przypadków, lecz mediana ARI względem dostępnych etykiet wyniosła tylko 0.065. Pokazuje to, że stabilność niesuperwizowana nie gwarantuje zgodności z pojedynczą etykietą kliniczną.
+
+Dwukierunkowy transfer GSE10072/GSE19804 dał jeden wynik silny (ARI 0,926; regret 0,000), natomiast w kierunku odwrotnym regret 0,105 przekroczył zamrożony limit 0,10. Gate C zakończył się formalnym STOP. W konsekwencji pilot wspiera tezę o domenach kompetencji reprezentacji i potrzebie jawnego mechanizmu wstrzymania, ale nie uzasadnia jeszcze silnego twierdzenia o w pełni zwalidowanym automatycznym selektorze. Sparse relational regions pozostają hipotezą metodologiczną projektu; direct regions i anchory nie były w pilotażu uruchamiane ani oceniane.

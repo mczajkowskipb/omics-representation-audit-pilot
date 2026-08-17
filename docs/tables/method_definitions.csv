@@ -1,0 +1,5 @@
+family,methods,meaning,clustering
+VALUE,V_EUC_PAM; V_COR_PAM,source-scaled measurement values,deterministic PAM
+RELATIONAL,R_FOOT_PAM; R_PAIR_PAM,within-sample ranks or ternary pair relations,deterministic PAM
+HYBRID,H_EUC_PAIR_A025/050/075_PAM,source-normalized value plus pair-relation distance,deterministic PAM
+NO_STABLE_STRUCTURE,none,no candidate exceeds NULL-calibrated eligibility,abstention
