@@ -207,6 +207,14 @@ def build_package(results_archive: Path, output_dir: Path) -> dict[str, object]:
     start_here = package_dir / "01_START_HERE"
     copy_file(ROOT / "docs/grant/README_FIRST_PL.md", start_here / "README_FIRST_PL.md")
     copy_file(
+        ROOT / "docs/grant/SONATA_BIS16_STRATEGIC_DECISION_MODIFY_PL.md",
+        start_here / "STRATEGIC_DECISION_MODIFY_PL.md",
+    )
+    copy_file(
+        ROOT / "docs/SONATA_BIS16_NARRATIVE_UPDATE_REPORT.md",
+        start_here / "SONATA_BIS16_NARRATIVE_UPDATE_REPORT.md",
+    )
+    copy_file(
         ROOT / "docs/SONATA_BIS16_COMPLETION_REPORT.md",
         start_here / "SONATA_BIS16_COMPLETION_REPORT.md",
     )

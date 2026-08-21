@@ -7,6 +7,12 @@ eleven real within-dataset audits and the **PILOT-019--020** closeout.
 
 ## The idea in plain language
 
+The grant-facing central question is deliberately narrow: under which
+source-observable conditions should omics clustering retain magnitude
+information, replace it with within-sample relations, combine both views, or
+abstain? `TRPP` names the principal relational-profile method developed after
+that decision; it is not an assumption that relations must win.
+
 The same patient can be compared in several ways:
 
 - **VALUE**: compare absolute, source-scaled measurements;
@@ -46,8 +52,8 @@ PYTHON_BIN=.venv/bin/python bash scripts/01_verify_core.sh
 
 `requirements-grant.lock` is required for the complete test suite and for
 deterministic PDF regeneration. A minimal scientific installation that does not
-run grant/PDF tests may omit it, but such a run is not the final 145-test
-acceptance configuration recorded at closeout.
+run grant/PDF tests may omit it, but such a run is not the complete acceptance
+configuration recorded in the release reports.
 
 Polish operational instructions are available in:
 
@@ -56,6 +62,13 @@ Polish operational instructions are available in:
 - `docs/FILES_AND_ARCHIVES_MANIFEST_PL.md` - exact stable filenames, generated
   release-name patterns and the distinction between required and optional
   artifacts.
+
+The grant-strategy decision and its scope boundary are documented in
+`docs/grant/SONATA_BIS16_STRATEGIC_DECISION_MODIFY_PL.md`. It records the
+`MODIFY` decision: representation adequacy becomes the central question,
+omics remains the sole primary testbed, and TRPP remains the main method family.
+The accompanying validation and change log is
+`docs/SONATA_BIS16_NARRATIVE_UPDATE_REPORT.md`.
 
 The extended command additionally runs the frozen 40-dataset smoke grid and
 refuses to overwrite an existing result directory:

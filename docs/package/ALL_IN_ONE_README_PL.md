@@ -1,4 +1,4 @@
-# SONATA BIS 16 / TRPP - paczka kompletna
+# SONATA BIS 16 - paczka kompletna
 
 Ta paczka zbiera w jednym miejscu aktualny kod, historię Git, pełne wyniki
 pilota, dowody, raporty i dokumenty wniosku. Najwygodniej zacząć od katalogu
@@ -8,6 +8,11 @@ pilota, dowody, raporty i dokumenty wniosku. Najwygodniej zacząć od katalogu
 
 - `01_START_HERE/README_FIRST_PL.md` - proste wyjaśnienie projektu, aktualny
   status i dokładne następne kroki;
+- `01_START_HERE/STRATEGIC_DECISION_MODIFY_PL.md` - krytyczna decyzja
+  strategiczna: representation adequacy jako pytanie centralne, TRPP jako
+  główna rodzina metod, bez rozszerzania projektu na „AI do wszystkiego”;
+- `01_START_HERE/SONATA_BIS16_NARRATIVE_UPDATE_REPORT.md` - raport zmian,
+  testów, ryzyk i braku odstępstw po aktualizacji narracji;
 - `01_START_HERE/SONATA_BIS16_COMPLETION_REPORT.md` - raport wykonanych zmian,
   testów, ryzyk i odstępstw;
 - `01_START_HERE/GITHUB_SERVER_GUIDE_PL.md` - dokładna instrukcja publikacji
@@ -40,6 +45,10 @@ pilota, dowody, raporty i dokumenty wniosku. Najwygodniej zacząć od katalogu
 - anchors: NOT TESTED.
 - PILOT-016-018: niewykonane, zablokowane wynikiem Gate C.
 - Brak target tuning i brak retrospektywnego rozluźniania progów.
+
+Nazwa technicznej paczki nadal zawiera `TRPP`, aby zachować zgodność z
+wcześniejszymi wydaniami. Nie oznacza to, że TRPP jest odpowiedzią założoną z
+góry w zmodyfikowanej narracji grantowej.
 
 ## Najbliższe zadanie
 

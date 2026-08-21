@@ -70,6 +70,7 @@ Najważniejszy pojedynczy raport:
 Najważniejsze pliki tekstowe w repozytorium:
 
 ```text
+docs/grant/SONATA_BIS16_STRATEGIC_DECISION_MODIFY_PL.md
 docs/PILOT_FINAL_REPORT.md
 docs/PILOT_012_015_REPORT.md
 docs/DECISION_LOG.md
@@ -111,6 +112,13 @@ PDF-y:
 
 Edytowalne źródła znajdują się w `04_GRANT_SOURCES/`. Są zachowane jako stan
 z dnia zamknięcia pakietu; publikacja repozytorium nie zmienia ich treści.
+
+Aktualna decyzja narracyjna znajduje się również w:
+
+```text
+01_START_HERE/STRATEGIC_DECISION_MODIFY_PL.md
+01_START_HERE/SONATA_BIS16_NARRATIVE_UPDATE_REPORT.md
+```
 
 ## 7. Pliki potrzebne na serwerze
 

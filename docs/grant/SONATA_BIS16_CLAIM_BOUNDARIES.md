@@ -31,6 +31,12 @@ Ten dokument jest blokadą redakcyjną. Nie zmienia protokołu ani wyników i ni
 
 ## Twierdzenia, których nie należy formułować
 
+- że projekt tworzy uniwersalną teorię wyboru reprezentacji dla dowolnych
+  danych albo meta-learner dla wielu dziedzin;
+- że samo połączenie VALUE i RELATIONAL, użycie rang albo regułowy opis
+  klastrów stanowi nowość;
+- że znana invariance na wspólną transformację monotoniczną oznacza odporność
+  na przesunięcia cechowe, zmianę sond, mapping platform lub każdy batch effect;
 - że automatyczny selektor jest już uniwersalnym rozwiązaniem dla nowych kohort;
 - że dwa kierunki transferu łącznie spełniły zamrożoną bramkę;
 - że 11 analiz within-dataset zastępuje niezależną replikację;
@@ -59,6 +65,15 @@ Nie należy nazywać wyniku „praktycznie zaliczonym”. Zamrożona bramka jest
 | direct sparse relational regions | niewykonane po STOP | główna hipoteza metodologiczna |
 | single-anchor restriction | niewykonane po STOP | eksperyment warunkowy |
 | anchor sets | poza podstawowym zakresem | nie wpisywać jako centralnego zadania |
+
+## Granica narracji po decyzji MODIFY
+
+Centralnym pytaniem jest adekwatność VALUE, RELATIONAL, HYBRID albo abstention
+w przenośnym grupowaniu omicznym. Omika pozostaje jedynym podstawowym
+testbedem, a TRPP główną rodziną metod rozwijaną dopiero dla przypadków, w
+których reprezentacja relacyjna jest wsparta przez dane. Zmiana tytułu i
+hipotezy głównej nie otwiera pilota, nie zmienia Gate C i nie tworzy wyniku dla
+direct regions lub anchorów.
 
 ## Źródła dowodowe
 

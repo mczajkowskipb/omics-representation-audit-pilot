@@ -8,9 +8,9 @@ Aktualność wymogów: sprawdzono 17.08.2026 na podstawie [ogłoszenia SONATA BI
 | Pole | Wartość robocza |
 |---|---|
 | Czas realizacji | 48 miesięcy |
-| Tytuł PL | Przenośne relacyjne profile pacjentów do interpretowalnego grupowania danych omicznych |
-| Title EN | Transportable Relational Patient Profiles for Interpretable Clustering of Omics Data |
-| Akronim | TRPP |
+| Tytuł PL | Adekwatność reprezentacji i przenośne profile relacyjne w grupowaniu danych omicznych |
+| Title EN | Representation Adequacy and Transportable Relational Profiles in Omics Clustering |
+| Akronim | brak obowiązkowego; TRPP oznacza główną rodzinę metod |
 | Obszar | ST |
 | Panel główny | ST6 — Informatyka i technologie informacyjne |
 | Określenia pomocnicze | ST6_11, ST6_13; opcjonalnie ST6_07 |
@@ -26,19 +26,19 @@ Keywords EN:
 
 ## 2. Abstract — wersja angielska
 
-High-dimensional omics clustering usually starts with an implicit and rarely tested decision: how should two patients be compared? Distances computed from scaled measurements, within-sample ranks, and pairwise ordering relations encode different biological and technical assumptions. A stable partition under one representation may disappear under another, and stability within a discovery cohort does not guarantee transfer to an independent cohort. This project will develop Transportable Relational Patient Profiles (TRPP), an interpretable framework in which representation adequacy is evaluated using source data only, sparse cluster profiles are learned as within-patient ordering rules, and the complete model is frozen before application to independent cohorts.
+High-dimensional omics clustering usually starts with an implicit and rarely tested decision: how should two patients be compared? Distances computed from scaled measurements, within-sample ranks, and pairwise ordering relations encode different biological and technical assumptions. A stable partition under one representation may disappear under another, and stability within a discovery cohort does not guarantee transfer to an independent cohort. The central question is therefore when magnitude information should be retained, replaced by within-sample relations, combined with them, or judged insufficient for clustering. The project will answer this question using source data only and will develop Transportable Relational Patient Profiles (TRPP) for cases in which relational structure is supported.
 
 The project has four objectives. First, it will establish a representation-adequacy map for value, relational and hybrid geometries, including an explicit NO_STABLE_STRUCTURE outcome. Second, it will develop deterministic direct sparse relational regions and compare them with ordinary relational clustering followed by post-hoc profile extraction. Third, it will test frozen profiles across independent omics cohorts without target refitting, joint normalisation or target-driven feature selection. Fourth, it will identify the signal, noise, missing-feature and platform-shift conditions under which relational information is useful, neutral or misleading.
 
 Preliminary experiments implemented a leakage-controlled, deterministic Python pipeline using the same PAM clustering engine for all representations. Across 630 controlled source-target pairs, the source-only audit identified the generating representation family in 93.3% of replicates, with median target ARI regret of 0.000 and a source-to-target Spearman association of 0.854. Results on eleven real datasets were more cautious: the selected representation was usually close to the retrospective within-dataset oracle, but median agreement with available labels was low. In bidirectional transfer between GSE10072 and GSE19804, one direction was strong whereas the reverse direction narrowly exceeded the preregistered regret limit. This mixed result motivates, rather than resolves, the proposed research: robust patient profiles require explicit applicability limits, multiple independent cohorts and direct profile learning.
 
-The expected outcome is a falsifiable theory and open reference implementation for deciding when relational patient profiles should be learned, how they can be transferred without reclustering target data, and when clustering should be withheld. The project will advance interpretable unsupervised learning by treating representation choice, abstention and cross-cohort transportability as first-class scientific problems.
+The expected outcome is a falsifiable applicability framework and open reference implementation for deciding when magnitude, relational, or hybrid information is justified, when relational patient profiles should be learned, how they can be transferred without reclustering target data, and when clustering should be withheld. The project will advance interpretable unsupervised learning by treating representation adequacy, abstention and cross-cohort transportability as first-class scientific problems.
 
 ## 3. Streszczenie popularnonaukowe — PL
 
 Badania omiczne mierzą jednocześnie aktywność tysięcy genów lub innych cząsteczek u każdego pacjenta. Jednym z głównych celów analizy jest odnalezienie grup pacjentów o podobnych mechanizmach choroby. Wynik takiego grupowania zależy jednak od sposobu porównywania osób. Możemy porównywać bezpośrednie wartości pomiarów albo pytać, które geny mają u danego pacjenta wyższą aktywność niż inne. Drugi sposób prowadzi do prostych reguł, na przykład „gen A jest bardziej aktywny niż gen B”, które mogą być łatwiejsze do interpretacji i mniej zależne od skali laboratoryjnej. Nie zawsze są jednak lepsze.
 
-Celem projektu jest opracowanie przenośnych relacyjnych profili pacjentów. Najpierw program, korzystając wyłącznie z kohorty źródłowej, sprawdzi, czy dane uzasadniają porównywanie wartości, rang lub obu rodzajów informacji. Gdy żadna reprezentacja nie daje wiarygodnej struktury, program będzie mógł wstrzymać grupowanie. Następnie dla stabilnych grup utworzy krótkie profile złożone z relacji między cechami. Pełny profil zostanie zamrożony i zastosowany do pacjentów z niezależnej kohorty bez ponownego grupowania tej kohorty i bez dostrajania modelu do jej wyników.
+Celem projektu jest ustalenie, kiedy zachować wartości pomiarów, kiedy użyć relacji między cechami, kiedy połączyć oba widoki, a kiedy wstrzymać grupowanie. Następnie, w przypadkach wspieranych przez dane, projekt opracuje przenośne relacyjne profile pacjentów. Program będzie korzystał wyłącznie z kohorty źródłowej. Dla stabilnych grup utworzy krótkie profile złożone z relacji między cechami. Pełny profil zostanie zamrożony i zastosowany do pacjentów z niezależnej kohorty bez ponownego grupowania tej kohorty i bez dostrajania modelu do jej wyników.
 
 Badania obejmą kontrolowane symulacje i wiele niezależnych zbiorów omicznych. Porównamy profile relacyjne z klasycznym grupowaniem wartościowym, rankingowym i hybrydowym. Ocenimy nie tylko zgodność z dostępnymi etykietami, lecz także stabilność profili, ich długość, pokrycie cech, odporność na różnice platform laboratoryjnych i zdolność do pozostawienia niepewnego pacjenta bez przypisania.
 
@@ -48,7 +48,7 @@ Wyniki wstępne pokazują, że różne sposoby reprezentacji rzeczywiście dzia�
 
 Omics studies measure thousands of genes or other molecular features in every patient. A common goal is to identify patient groups that may reflect different disease mechanisms. However, the resulting groups depend strongly on how patients are compared. We may compare measurement values directly, or ask which features are higher than others within the same patient. The latter approach creates readable rules such as “gene A is more active than gene B” and may be less sensitive to laboratory scale differences, but it is not universally superior.
 
-This project will develop Transportable Relational Patient Profiles. Using only a discovery cohort, the method will first determine whether value, rank-based or combined comparisons are supported by stable structure. It will also be allowed to report that no stable structure is present. For supported cases, it will learn short profiles made of ordering relations. The complete profile will then be frozen and applied to patients from independent cohorts without regrouping those cohorts or tuning the method to their outcomes.
+This project will determine when magnitude, rank-based, relational, or combined comparisons are supported by stable structure and when no clustering is justified. For cases that support relational structure, it will develop Transportable Relational Patient Profiles made of short ordering rules. The complete profile will then be frozen and applied to patients from independent cohorts without regrouping those cohorts or tuning the method to their outcomes.
 
 The research will combine controlled simulations with multiple independent omics datasets. Relational profiles will be compared with standard value-based, rank-based and hybrid clustering. Evaluation will cover profile stability, interpretability, missing-feature coverage, resistance to laboratory and platform shifts, agreement with external biological information, and the ability to leave uncertain patients unassigned.
 
@@ -60,7 +60,7 @@ Nazwy są sformułowane jako zadania badawcze, a nie zakupy, wyjazdy lub przygot
 
 | Nr | Nazwa PL | Name EN | Miesiące |
 |---:|---|---|---:|
-| 1 | Ocena adekwatności reprezentacji i kalibracja wstrzymania grupowania | Representation adequacy assessment and clustering-abstention calibration | 1–12 |
+| 1 | Adekwatność reprezentacji, niezmienniczość i kalibracja wstrzymania grupowania | Representation adequacy, invariance and clustering-abstention calibration | 1–12 |
 | 2 | Bezpośrednie uczenie rzadkich relacyjnych obszarów pacjentów | Direct learning of sparse relational patient regions | 7–24 |
 | 3 | Zamrożony transfer profili relacyjnych między niezależnymi kohortami | Frozen transfer of relational profiles across independent cohorts | 18–38 |
 | 4 | Wyznaczenie granic stosowalności i uogólnienie profili TRPP | Applicability-boundary mapping and generalisation of TRPP profiles | 31–48 |
@@ -97,7 +97,7 @@ Według dokumentacji konkursowej aktualnej 17.08.2026:
 
 ## 9. Brakujące dane przed wersją do wysłania
 
-- ostateczny tytuł i 3 pomocnicze określenia identyfikujące;
+- 3 pomocnicze określenia identyfikujące dla zatwierdzonego tytułu;
 - decyzja 48/60 miesięcy;
 - dane i model zatrudnienia doktoranta oraz post-doc/specjalisty;
 - lista wcześniejszych wspólnych projektów członków zespołu;

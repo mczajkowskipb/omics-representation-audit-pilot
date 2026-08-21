@@ -1,4 +1,17 @@
-# TRPP / SONATA BIS 16 - od czego zacząć
+# SONATA BIS 16 - od czego zacząć
+
+## Decyzja strategiczna z 21.08.2026
+
+Po krytycznym porównaniu wariantu TRPP-centred z szerokim projektem
+absolute/relational/hybrid przyjęto **MODIFY**. Centralne pytanie dotyczy teraz
+tego, kiedy zachować wartości, kiedy użyć relacji wewnątrz próbki, kiedy obu
+widoków, a kiedy wstrzymać grupowanie - zawsze w przenośnym grupowaniu danych
+omicznych. TRPP pozostaje główną rodziną metod i rezultatem biomedycznym, ale
+nie odpowiedzią założoną z góry.
+
+Pełne uzasadnienie znajduje się w
+`SONATA_BIS16_STRATEGIC_DECISION_MODIFY_PL.md`. Ta zmiana dotyczy narracji
+wniosku. Nie zmienia protokołu, wyników ani bramek pilota.
 
 ## Co tu się dzieje, prostymi słowami
 
@@ -32,8 +45,10 @@ kohortach.
 - direct regions: NOT TESTED.
 - anchors: NOT TESTED.
 - PILOT-016-018 nie zostały uruchomione, zgodnie z protokołem.
-- Pełny zestaw 145 testów przechodzi, w tym testy poprawności,
-  deterministyczności i braku leakage.
+- W samodzielnym środowisku tej paczki przechodzi 150 testów; trzy oczekiwane
+  testy są pomijane, ponieważ zewnętrzne repozytoria referencyjne nie są
+  kopiowane do paczki, a etykiety realne pozostają fizycznie zamknięte. Testy
+  poprawności, deterministyczności i braku leakage przechodzą.
 - Gotowe są: opis skrócony EN, opis szczegółowy EN, streszczenie popularne PL,
   streszczenie popularne EN, rdzeń naukowy PL, wyniki wstępne, audyt kohort i
   komplet raportów pilota.
@@ -48,10 +63,14 @@ kohortach.
 - `output/pdf/SONATA_BIS_PILOT_CLOSEOUT_REPORT.pdf` - końcowy raport pilota;
 - `docs/grant/SONATA_BIS16_DEFAULTS_FROZEN.md` - zatwierdzone ustawienia
   robocze;
+- `docs/grant/SONATA_BIS16_STRATEGIC_DECISION_MODIFY_PL.md` - decyzja
+  `MODIFY`, granice zakresu i prosty argument dla recenzenta;
 - `docs/grant/SONATA_BIS16_DATASET_AUDIT.md` - kohorty lung/CRC i ryzyka;
 - `docs/grant/SONATA_BIS16_CLAIM_BOUNDARIES.md` - czego nie wolno nadmiernie
   twierdzić;
 - `docs/SONATA_BIS16_COMPLETION_REPORT.md` - raport z ostatniego bloku.
+- `docs/SONATA_BIS16_NARRATIVE_UPDATE_REPORT.md` - raport decyzji `MODIFY`,
+  zmian narracji i ich walidacji.
 
 ## Co trzeba jeszcze zrobić przed wysłaniem wniosku
 
@@ -69,4 +88,3 @@ wymyślić:
 Najbliższe właściwe zadanie to zatem **finalizacja administracyjna i budżetowa
 wniosku**, a nie dalsze „ratowanie” pilota. Nowe eksperymenty direct regions są
 treścią proponowanego projektu i pozostają jawnie niewykonane na etapie wniosku.
-

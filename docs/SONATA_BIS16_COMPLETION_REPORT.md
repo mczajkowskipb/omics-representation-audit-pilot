@@ -4,6 +4,12 @@ Date: 2026-08-17
 Scope: default scientific application package and one-archive handoff  
 Protocol status: unchanged and authoritative
 
+**Historical status:** the TRPP-centred title recorded below was superseded on
+2026-08-21 by the authorised `MODIFY` narrative decision. See
+`docs/grant/SONATA_BIS16_STRATEGIC_DECISION_MODIFY_PL.md` and
+`docs/SONATA_BIS16_NARRATIVE_UPDATE_REPORT.md`. Pilot evidence and every
+GO/STOP decision remain unchanged.
+
 ## Completed changes
 
 - Frozen the user-approved working defaults: TRPP-centred title, 48 months,
@@ -89,4 +95,3 @@ personal records, insert the final PI track record, confirm any named Girona
 collaboration, and then perform a line-by-line OSF/formal compliance review of
 the four generated scientific PDFs. No additional pilot experiment is required
 for this handoff.
-

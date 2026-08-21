@@ -64,4 +64,8 @@ def test_scientific_pdfs_preserve_pilot_boundaries(tmp_path: Path) -> None:
         assert "direct regions: NOT TESTED" in normalised
         assert "anchors: NOT TESTED" in normalised
         assert "labels were used only after all source-only" in normalised
+        assert (
+            "Representation Adequacy and Transportable Relational Profiles"
+            in normalised
+        )
         assert "&#8226;" not in text

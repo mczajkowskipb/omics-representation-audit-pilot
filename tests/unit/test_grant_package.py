@@ -29,6 +29,21 @@ def test_grant_package_matches_frozen_evidence() -> None:
     assert result["direct_regions"] == "NOT_TESTED"
     assert result["anchors"] == "NOT_TESTED"
     assert result["forbidden_claim_count"] == 0
+    assert result["document_count"] == 12
+
+
+def test_strategic_modify_is_narrow_and_preserves_frozen_boundaries() -> None:
+    strategy = (
+        ROOT / "docs/grant/SONATA_BIS16_STRATEGIC_DECISION_MODIFY_PL.md"
+    ).read_text(encoding="utf-8")
+    assert "Decyzja: **MODIFY**" in strategy
+    assert "Omika jest częścią problemu badawczego" in strategy
+    assert "Gate B: **GO**" in strategy
+    assert "Gate C: **STOP**" in strategy
+    assert "direct regions: **NOT TESTED**" in strategy
+    assert "anchors: **NOT TESTED**" in strategy
+    assert "defence/PYTHIA" in strategy
+    assert "ogólny meta-learner" in strategy
 
 
 def test_grant_package_validation_is_byte_deterministic() -> None:

@@ -1,6 +1,6 @@
-# Transportable Relational Patient Profiles for Interpretable Clustering of Omics Data
+# Representation Adequacy and Transportable Relational Profiles in Omics Clustering
 
-**TRPP - detailed project description**  
+**TRPP method family - detailed project description**
 **SONATA BIS 16 | 48 months | primary panel ST6**  
 **Scientific draft:** complete in scope and logic. Verified personnel,
 institutional, budget, and publication-record data must be entered in OSF by the
@@ -32,21 +32,23 @@ may fail when assigned to new patients. These limitations are especially
 important in omics studies, where dimensionality is high, cohorts are modest,
 and platforms and populations differ.
 
-The project will develop **Transportable Relational Patient Profiles (TRPP)**,
-an auditable framework with two linked decisions. First, a source-only
-Representation Audit determines whether VALUE, RELATIONAL, HYBRID, or
-`NO_STABLE_STRUCTURE` is supported. Second, for eligible cases, a direct method
-learns sparse relational regions: short sets of within-patient rules that define
-a group and can assign a new patient without reclustering the target cohort.
-The entire artifact is frozen before target evaluation, and insufficient
-evidence yields `UNASSIGNED`.
+The project asks one central question: under which source-observable conditions
+should magnitude information be retained, replaced by within-sample relations,
+combined with them, or judged insufficient for stable and transportable omics
+clustering? A source-only Representation Audit first determines whether VALUE,
+RELATIONAL, HYBRID, or `NO_STABLE_STRUCTURE` is supported. For eligible
+relational cases, the project will develop **Transportable Relational Patient
+Profiles (TRPP)** as sparse regions: short sets of within-patient rules that
+define a group and can assign a new patient without reclustering the target
+cohort. The entire artifact is frozen before target evaluation, and
+insufficient evidence yields `UNASSIGNED`.
 
 ### 1.2 Main hypothesis
 
-Biologically useful patient groups can be represented by sparse sets of stable
-within-patient relations when the representation's domain of adequacy is
-estimated exclusively from a source cohort and the resulting preprocessing,
-profiles, and assignment rule are frozen before independent transfer.
+Measurable signal and shift properties determine whether transportable
+grouping should retain values, use within-sample relations, combine both views,
+or abstain; within the relational domain, biologically useful patient groups
+can be represented by sparse frozen rule sets.
 
 This is not a hypothesis that relations are universally superior. It predicts
 distinct competence regimes and permits value geometry or abstention to be the
@@ -57,10 +59,10 @@ correct outcome.
 ### 1.3 Specific hypotheses and objectives
 
 **H1 - representation adequacy.** Source-only stability, prediction strength,
-non-degeneracy, and matched-null evidence can distinguish competence domains of
-VALUE, RELATIONAL, and HYBRID and detect absence of stable structure. The
-corresponding objective is to build and validate a representation-adequacy map,
-not merely a winner-take-all selector.
+non-degeneracy, matched-null evidence, and explicit invariance properties can
+distinguish competence domains of VALUE, RELATIONAL, and HYBRID and detect
+absence of stable structure. The corresponding objective is to build and
+validate a representation-adequacy map, not merely a winner-take-all selector.
 
 **H2 - direct relational regions.** Direct joint learning of assignments and
 sparse relational profiles can provide equal or better external transfer than
@@ -92,7 +94,7 @@ The four objectives are:
 
 ### 1.4 What the project will not claim
 
-TRPP is basic methodological research. It will not claim that unsupervised
+The project is basic methodological research. It will not claim that unsupervised
 groups are diagnoses, that stability proves biological validity, or that a
 profile is clinically useful without prospective validation. Target labels
 cannot train, select, or rescue a method. Fuzzy clustering, evolutionary
@@ -137,15 +139,18 @@ cluster profile must emerge without such labels. A post-hoc profile can explain
 a given cluster, but explanation after clustering does not show that the rules
 were sufficient to define or transfer the group.
 
-Multi-view methods combine representations, but a fitted hybrid can benefit
-from target or label information if weights are selected after evaluation. Batch
-correction addresses a related but different problem. Methods such as ComBat
-can enable joint analysis when batches are explicitly modelled; they are not
-appropriate for the project's primary frozen-transfer claim if fitting them
-uses the target cohort distribution. TRPP therefore compares cohort-wise
-preprocessing and source-frozen mapping in the primary analysis, with pooled
-batch correction only as a clearly separated secondary analysis that cannot
-support a frozen-transfer claim.
+Multi-view and multiple-kernel methods already combine representations, and
+interpretable clustering already learns tree- or rule-based descriptions.
+Consequently, neither view fusion nor rules alone constitute the proposed
+novelty. A fitted hybrid can also benefit from target or label information if
+weights are selected after evaluation. Batch correction addresses a related
+but different problem. Methods such as ComBat can enable joint analysis when
+batches are explicitly modelled; they are not appropriate for the project's
+primary frozen-transfer claim if fitting them uses the target cohort
+distribution. The project therefore compares cohort-wise preprocessing and
+source-frozen mapping in the primary analysis, with pooled batch correction
+only as a clearly separated secondary analysis that cannot support a frozen-
+transfer claim.
 
 ### 2.3 Innovation
 
@@ -239,15 +244,18 @@ explicit coverage, and direct profile learning.
 
 ## 4. Research plan
 
-### WP1 - Representation adequacy and clustering abstention (months 1-12)
+### WP1 - Representation adequacy, invariance and clustering abstention (months 1-12)
 
-WP1 will formalise the audit and extend controlled regimes. Generators will
-separate value-magnitude signal, stable relative-order signal, complementary
-hybrid signal, and no structure. Orthogonal perturbations will include global
-and feature-specific shifts, monotone sample transformations, variance changes,
-dropout and missing features, unbalanced groups, nuisance factors, mapping
-errors, and source-target mixture changes. Unknown numbers of groups will be
-included after the fixed-K correctness layer is locked.
+WP1 will formalise an operational invariance and information-loss taxonomy for
+the finite VALUE, rank, ternary-relation, and HYBRID family, and will extend
+controlled regimes. It will state which transformations preserve each view and
+which remove or reverse information, then test those predictions. Generators
+will separate value-magnitude signal, stable relative-order signal,
+complementary hybrid signal, and no structure. Orthogonal perturbations will
+include global and feature-specific shifts, monotone sample transformations,
+variance changes, dropout and missing features, unbalanced groups, nuisance
+factors, mapping errors, and source-target mixture changes. Unknown numbers of
+groups will be included after the fixed-K correctness layer is locked.
 
 Every primary matched comparison uses the same deterministic PAM. Candidate
 cluster numbers and hybrid weights are finite and preregistered. For each
@@ -666,10 +674,11 @@ person's achievements or commitment are inferred in this scientific draft.
 The pilot provides operational infrastructure rather than a mock-up. It already
 implements the data boundary, source artifacts, representations, distances,
 deterministic PAM, controlled grids, real-data adapters, frozen assignment,
-evidence validation, and automated reports. At closeout, 138 tests passed and
-the complete 630-pair benchmark was executed. The formal STOP at Gate C shows
-that stopping logic works in practice. The project begins from tested Level-1
-to Level-3 components while keeping direct regions as genuine research.
+evidence validation, automated reports, and tests of correctness, determinism,
+and leakage. The complete 630-pair benchmark was executed. The formal STOP at
+Gate C shows that stopping logic works in practice. The project begins from
+tested Level-1 to Level-3 components while keeping direct regions as genuine
+research.
 
 Public cohorts make the 48-month plan realistic without depending on new sample
 recruitment. The main resource requirement is staff time and deterministic CPU
@@ -756,8 +765,8 @@ making omics clustering more interpretable, falsifiable, and transport-aware.
 
 ## 11. Expected scientific impact
 
-TRPP will shift emphasis from producing a partition to justifying a frozen
-patient representation. It will provide researchers with evidence about when a
+The project will shift emphasis from producing a partition to justifying a
+frozen patient representation. It will provide researchers with evidence about when a
 within-sample relational description is credible, when magnitude information
 must be retained, and when data do not support grouping. Direct regions will
 connect unsupervised discovery with an interpretable rule-based assignment
@@ -851,4 +860,20 @@ clinical product.
 24. Ioannidis JPA et al. Repeatability of published microarray gene expression
     analyses. *Nature Genetics*. 2009;41:149-155.
     <https://doi.org/10.1038/ng.295>
-
+25. Kumar A, Rai P, Daume H. Co-regularized multi-view spectral clustering.
+    *Advances in Neural Information Processing Systems*. 2011;24:1413-1421.
+    <https://proceedings.neurips.cc/paper/2011/hash/31839b036f63806cba3f47b93af8ccb5-Abstract.html>
+26. Bertsimas D, Orfanoudaki A, Wiberg H. Interpretable clustering: an
+    optimization approach. *Machine Learning*. 2021;110:89-138.
+    <https://doi.org/10.1007/s10994-020-05896-2>
+27. Carrizosa E, Kurishchenko K, Marin A, Romero Morales D. On clustering and
+    interpreting with rules by means of mathematical optimization. *Computers
+    and Operations Research*. 2023;154:106180.
+    <https://doi.org/10.1016/j.cor.2023.106180>
+28. Eriksson P et al. A comparison of rule-based and centroid single-sample
+    multiclass predictors for transcriptomic classification. *Bioinformatics*.
+    2022;38:1022-1029. <https://doi.org/10.1093/bioinformatics/btab763>
+29. Guan Q et al. Differential expression analysis for individual cancer
+    samples based on robust within-sample relative gene expression orderings
+    across multiple profiling platforms. *Oncotarget*. 2016;7:68909-68920.
+    <https://doi.org/10.18632/oncotarget.11996>

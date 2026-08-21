@@ -1,7 +1,8 @@
-# SONATA BIS 16 - frozen working defaults
+# SONATA BIS 16 - frozen working defaults after strategic MODIFY
 
 Status: approved working defaults for preparation of the scientific application  
-Frozen on: 2026-08-17  
+Initial freeze: 2026-08-17
+Narrative revision: 2026-08-21 (`MODIFY`; pilot evidence unchanged)
 Scientific pilot evidence: commit `9adae889601486ffb5e9e29f29afe16cc1e1e698`
 
 These choices organise the grant draft. They do not change the pilot protocol,
@@ -9,11 +10,12 @@ the experimental thresholds, or the formal pilot decisions.
 
 ## Identity and duration
 
-- Polish title: Przenosne relacyjne profile pacjentow do interpretowalnego
-  grupowania danych omicznych.
-- English title: Transportable Relational Patient Profiles for Interpretable
-  Clustering of Omics Data.
-- Acronym: TRPP.
+- Polish title: Adekwatnosc reprezentacji i przenosne profile relacyjne w
+  grupowaniu danych omicznych.
+- English title: Representation Adequacy and Transportable Relational Profiles
+  in Omics Clustering.
+- Project acronym: none required. `TRPP` names the principal method family and
+  biomedical output, not a representation assumed to win in advance.
 - Duration: 48 months.
 - Primary panel: ST6 - Computer and information sciences.
 - Auxiliary descriptors: ST6_11 and ST6_13; ST6_07 may be added only if the
@@ -21,9 +23,13 @@ the experimental thresholds, or the formal pilot decisions.
 
 ## Scientific scope
 
-- Core problem: determine, from the source cohort only, whether value,
-  relational, hybrid, or no stable structure is supported before learning a
-  patient grouping.
+- Core question: determine, from the source cohort only, when magnitude
+  information should be retained, replaced by within-sample relational
+  information, or combined with it for stable and transportable omics
+  clustering; allow no stable structure as a valid outcome.
+- Formal scope in WP1: an operational invariance/information-loss taxonomy for
+  a finite, preregistered family of value, rank, ternary-relation and hybrid
+  representations - not a universal theory of data representation.
 - Core method: direct sparse relational regions that describe groups using
   short within-patient rules and support frozen assignment of new patients.
 - Disease modules: lung adenocarcinoma and colorectal cancer.
@@ -77,4 +83,3 @@ therefore left for final completion rather than invented:
   the accepted Artificial Intelligence Review paper;
 - overlap statement against the PI's completed and submitted projects;
 - ethics and data-protection declarations signed by the host institution.
-

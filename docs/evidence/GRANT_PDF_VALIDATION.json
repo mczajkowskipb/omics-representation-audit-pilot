@@ -1,39 +1,39 @@
 {
-  "build_date": "2026-08-17",
+  "build_date": "2026-08-21",
   "deterministic_canvas": true,
   "document_count": 4,
   "documents": [
     {
-      "bytes": 84338,
+      "bytes": 86123,
       "output": "output/pdf/SONATA_BIS16_SHORT_DESCRIPTION_EN_DRAFT.pdf",
       "pages": 6,
-      "pdf_sha256": "3f2ade145a0e5b915317176df5d810f8fe186958c79dcb16e812ca17f637d41e",
+      "pdf_sha256": "1b3b7d99f6c0749d6cf73909c9b6583d443ae155fa40b0a6c9a51efcf8c1e5e8",
       "source": "docs/grant/SONATA_BIS16_SHORT_DESCRIPTION_EN.md",
-      "source_sha256": "0a7e68af8432d14dba47ff6b6f53a1fff3bf34b56e9d090ee713bf5cb0d08b80"
+      "source_sha256": "6d60f0e6dcee8eabdccb73eba784cffda1ae23d46cb7b0f000141c99dfb8eb23"
     },
     {
-      "bytes": 114685,
+      "bytes": 117242,
       "output": "output/pdf/SONATA_BIS16_DETAILED_DESCRIPTION_EN_DRAFT.pdf",
       "pages": 15,
-      "pdf_sha256": "8e3baff6e135b0a75e606804a23aaaf3d3507f42486dc1c894ab99bb2348b8f7",
+      "pdf_sha256": "b0851ebe7ee87f7a4018ed4f3d2315fdfa629e0e6c0b83b1c9ebcca195a855bd",
       "source": "docs/grant/SONATA_BIS16_DETAILED_DESCRIPTION_EN_DRAFT.md",
-      "source_sha256": "28c1bcc34c6953af33fc13ecdb0f16e485ac5a20846191be44a46f6e0f1f7342"
+      "source_sha256": "209ec4fd68b3e5248bf262efd6683987b695e6e133046149ef85ffe69a807917"
     },
     {
-      "bytes": 46601,
+      "bytes": 46699,
       "output": "output/pdf/SONATA_BIS16_POPULAR_SUMMARY_PL.pdf",
       "pages": 1,
-      "pdf_sha256": "41187cf69c85acd93597fd73e34b6a94618c60aabe348c99d7c37f2aaa7bcf67",
+      "pdf_sha256": "d00b491fc1db5fe7ebfd2d241f9edbfca6bba07e34faa8c060da97ed2f710a73",
       "source": "docs/grant/SONATA_BIS16_POPULAR_SUMMARY_PL.md",
-      "source_sha256": "9f601e09f2a1955ed43e5c8be61253d0402fa4a0b9d2712458236e9d80a444e0"
+      "source_sha256": "5bf684f3ffb62655fbb53c08ec4da25252d93030deaa168ab3fb32857a36f600"
     },
     {
-      "bytes": 45748,
+      "bytes": 45859,
       "output": "output/pdf/SONATA_BIS16_POPULAR_SUMMARY_EN.pdf",
       "pages": 1,
-      "pdf_sha256": "b0d7ad9611ed32734df1a47eaabc201bbec8b427e34ff5b8cf504497f369dabe",
+      "pdf_sha256": "ec8d04935a298d0dc7ffd2056d742cbe79858ad12b8566a52d7bb4d16af0c9d7",
       "source": "docs/grant/SONATA_BIS16_POPULAR_SUMMARY_EN.md",
-      "source_sha256": "867ae2ecc7120a2ba02cbd717f52e6e0eecb3b9356426fcb69104b41b5eb79c1"
+      "source_sha256": "860397b468b98ab8804fcdedd1d5d7f63c8cac1cce9266c0b6a309ddaaf74183"
     }
   ],
   "schema": "GrantPdfValidation/v1"

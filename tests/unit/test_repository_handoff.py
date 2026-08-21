@@ -85,3 +85,13 @@ def test_manifest_names_frozen_results_and_local_only_config() -> None:
     assert "omics-representation-audit-pilot-results-9adae88.tar.gz" in manifest
     assert "configs/datasets.local.yml" in manifest
     assert "Lokalnie trzeba utworzyć, ale nie commitować" in manifest
+
+
+def test_handoff_includes_strategic_decision_and_update_report() -> None:
+    builder = BUILDER_PATH.read_text(encoding="utf-8")
+    assert "SONATA_BIS16_STRATEGIC_DECISION_MODIFY_PL.md" in builder
+    assert "SONATA_BIS16_NARRATIVE_UPDATE_REPORT.md" in builder
+    package_readme = (ROOT / "docs/package/ALL_IN_ONE_README_PL.md").read_text(
+        encoding="utf-8"
+    )
+    assert "STRATEGIC_DECISION_MODIFY_PL.md" in package_readme

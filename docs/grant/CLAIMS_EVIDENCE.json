@@ -5,6 +5,7 @@
   "primary_evidence": "docs/evidence/PILOT_019_VALIDATION.json",
   "grant_documents": [
     "docs/grant/README_FIRST_PL.md",
+    "docs/grant/SONATA_BIS16_STRATEGIC_DECISION_MODIFY_PL.md",
     "docs/grant/SONATA_BIS16_DEFAULTS_FROZEN.md",
     "docs/grant/SONATA_BIS16_DATASET_AUDIT.md",
     "docs/grant/SONATA_BIS16_SHORT_DESCRIPTION_EN.md",

@@ -137,3 +137,28 @@ the manifest-pinned size and SHA-256; the untracked file was not read.
 36. Anchor restriction is conditional and anchor sets are excluded from the
     core proposal. No target-driven rescue, threshold relaxation or additional
     post-label model selection is authorised by this writing block.
+
+## Strategic narrative revision after user authorisation
+
+37. On 2026-08-21 the broad `absolute versus relational versus hybrid` proposal
+    was evaluated as an alternative, not as an automatic scope expansion. The
+    decision is `MODIFY`: representation adequacy becomes the central question
+    only within transportable high-dimensional omics clustering.
+38. The recommended project title is `Representation Adequacy and
+    Transportable Relational Profiles in Omics Clustering`. `TRPP` remains the
+    principal method family and biomedical output in WP2-WP3, not a result
+    assumed before WP1.
+39. The protocol, thresholds, pilot code path, scientific artifacts, Gate B
+    `GO`, Gate C `STOP`, and `NOT TESTED` status of direct regions and anchors
+    remain unchanged. This block creates no new experimental result and does
+    not reopen PILOT-016--018.
+40. Generic view fusion, rank robustness, and rule-based clustering are not
+    claimed as novel. The grant novelty boundary is the combination of a
+    source-only adequacy audit, explicit abstention, within-sample direct
+    relational regions, frozen multi-cohort assignment, and physical label
+    separation.
+41. Omics remains the sole primary testbed. EEG, defence/PYTHIA, finance, IoT,
+    social data, GNNs, Hawkes processes, deep learning, fuzzy clustering,
+    evolutionary algorithms, federated learning, CUDA, a portal, anchor sets,
+    and an unrestricted family of relational operators remain outside the core
+    scope.

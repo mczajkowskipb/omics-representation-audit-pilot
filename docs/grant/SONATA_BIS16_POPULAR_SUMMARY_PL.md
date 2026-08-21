@@ -1,4 +1,4 @@
-# Przenośne relacyjne profile pacjentów
+# Adekwatność reprezentacji i przenośne profile relacyjne
 
 Badania omiczne mierzą jednocześnie aktywność tysięcy genów lub innych
 cząsteczek u każdego pacjenta. Jednym z głównych celów analizy jest odnalezienie
@@ -9,9 +9,10 @@ niż inne. Drugi sposób prowadzi do prostych reguł, na przykład „gen A jest
 bardziej aktywny niż gen B”. Takie reguły mogą być łatwiejsze do interpretacji i
 mniej zależne od skali laboratoryjnej, ale nie zawsze są lepsze.
 
-Celem projektu jest opracowanie przenośnych relacyjnych profili pacjentów.
-Najpierw program, korzystając wyłącznie z jednej kohorty źródłowej, sprawdzi, czy
-dane uzasadniają porównywanie wartości, rang, relacji między genami lub połączenie
+Celem projektu jest ustalenie, **kiedy każdy z tych sposobów porównywania jest
+uzasadniony**, a następnie opracowanie przenośnych relacyjnych profili pacjentów
+tam, gdzie wspierają je dane. Najpierw program, korzystając wyłącznie z jednej
+kohorty źródłowej, sprawdzi wartości, rangi, relacje między genami i połączenie
 tych informacji. Jeżeli żadna reprezentacja nie daje wiarygodnej struktury,
 program będzie mógł uczciwie wstrzymać grupowanie. Dla stabilnych grup utworzy
 krótkie profile złożone z relacji między cechami. Taki profil będzie pełnił rolę
@@ -40,4 +41,3 @@ zakłada więc, że relacje zawsze wygrają. Jego wynikiem będą metody i jawne
 określające, kiedy relacyjne profile pacjentów są wiarygodne, kiedy należy
 zachować informacje o wartościach, a kiedy uczciwym wynikiem jest rezygnacja z
 grupowania.
-

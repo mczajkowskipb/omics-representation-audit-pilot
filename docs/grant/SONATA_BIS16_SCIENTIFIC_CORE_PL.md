@@ -6,24 +6,30 @@ Protokół: SHA-256 `5104901b66403ab29bbad24f7fdc48dda10121b1a584740ec47af02790d
 
 ## 1. Decyzja strategiczna
 
-Projekt powinien być zbudowany wokół **Transportable Relational Patient Profiles (TRPP)**, a nie wokół obietnicy uniwersalnego automatycznego wyboru reprezentacji. Pilot daje mocny dowód kontrolowany, że reprezentacje wartościowe, rankingowo-relacyjne i hybrydowe mają różne domeny kompetencji. Nie daje natomiast podstaw do stwierdzenia, że selektor został już szeroko potwierdzony między niezależnymi kohortami.
+Decyzja po porównaniu dwóch skrajnych wariantów brzmi **MODIFY**. Projekt nie
+powinien być ani wyłącznie projektem o TRPP, ani ogólną teorią wyboru
+reprezentacji dla dowolnych danych. Powinien odpowiadać na jedno ograniczone
+pytanie: kiedy w przenośnym grupowaniu danych omicznych zachować informację o
+wartościach, kiedy zastąpić ją relacjami wewnątrz próbki, kiedy połączyć oba
+widoki, a kiedy wstrzymać grupowanie.
+
+Pilot daje mocny dowód kontrolowany, że reprezentacje wartościowe,
+rankingowo-relacyjne i hybrydowe mają różne domeny kompetencji. Nie daje
+natomiast podstaw do stwierdzenia, że selektor został już szeroko potwierdzony
+między niezależnymi kohortami ani że direct regions są skuteczne.
 
 Representation Audit powinien pełnić w projekcie rolę pierwszej, jawnej bramki: ma wskazać, czy dane source uzasadniają dalsze uczenie profili wartościowych, relacyjnych lub hybrydowych, albo czy należy wstrzymać grupowanie. Główną nowością metodologiczną pozostaje uczenie krótkich relacyjnych obszarów, które opisują grupę regułami wewnątrz pacjenta i mogą być zastosowane do nowej kohorty bez jej ponownego grupowania.
 
 ## 2. Proponowany tytuł i akronim
 
-**Tytuł polski:** Przenośne relacyjne profile pacjentów do interpretowalnego grupowania danych omicznych
+**Tytuł polski:** Adekwatność reprezentacji i przenośne profile relacyjne w grupowaniu danych omicznych
 
-**Tytuł angielski:** Transportable Relational Patient Profiles for Interpretable Clustering of Omics Data
+**Tytuł angielski:** Representation Adequacy and Transportable Relational Profiles in Omics Clustering
 
-**Akronim roboczy:** TRPP
+**Nazwa metody:** TRPP — Transportable Relational Patient Profiles
 
-Wariant bardziej zachowawczy:
-
-- PL: Adekwatność reprezentacji i przenośne profile relacyjne w grupowaniu danych omicznych;
-- EN: Representation Adequacy and Transportable Relational Profiles in Omics Clustering.
-
-Pierwszy wariant lepiej eksponuje nową rodzinę metod. Drugi mocniej odpowiada bezpośrednio na mieszany wynik pilota.
+Tytuł celowo nie obiecuje, że relacje zawsze wygrają. TRPP pozostaje konkretną
+rodziną metod rozwijaną w WP2-WP3, a nie akronimem narzucającym wynik WP1.
 
 ## 3. Problem naukowy
 
@@ -38,11 +44,18 @@ Reprezentacje oparte na relacjach wewnątrz próbki, takich jak `gene_A > gene_B
 
 **H0-projektowa:** nie istnieje jedna reprezentacja właściwa dla wszystkich kohort omicznych, a stabilność wewnątrz jednej kohorty sama nie wystarcza do uzasadnienia biologicznego grupowania.
 
-**Hipoteza główna:** biologicznie użyteczne podgrupy pacjentów można reprezentować jako rzadkie zbiory stabilnych relacji wewnątrz próbki, pod warunkiem że domena adekwatności reprezentacji zostanie oceniona wyłącznie na kohorcie source, a profil, preprocessing i reguła przypisania zostaną zamrożone przed zastosowaniem do niezależnych kohort.
+**Hipoteza główna:** mierzalne właściwości sygnału i przesunięcia między
+kohortami wyznaczają, czy przenośne grupowanie powinno zachować wartości,
+użyć relacji wewnątrz próbki, połączyć oba widoki albo zostać wstrzymane;
+wewnątrz domeny relacyjnej biologicznie użyteczne podgrupy można opisać jako
+rzadkie, zamrożone profile reguł.
 
 Hipotezy szczegółowe:
 
-- **H1 — adekwatność reprezentacji:** source-only diagnostyki stabilności, prediction strength i odporności na perturbacje pozwalają rozróżniać domeny kompetencji VALUE, RELATIONAL i HYBRID oraz wykrywać brak stabilnej struktury;
+- **H1 — adekwatność reprezentacji:** source-only diagnostyki stabilności,
+  prediction strength, odporności na perturbacje oraz jawne własności
+  invariance pozwalają rozróżniać domeny kompetencji VALUE, RELATIONAL i
+  HYBRID oraz wykrywać brak stabilnej struktury;
 - **H2 — regiony bezpośrednie:** bezpośrednia indukcja rzadkich regionów relacyjnych daje profile co najmniej równie przenośne jak relacyjny PAM z ekstrakcją post-hoc, przy większej stabilności lub krótszym opisie;
 - **H3 — transfer bez refittingu:** profile zamrożone na source zachowują użyteczne przypisania i kalibrowane odrzucanie w niezależnych kohortach, bez dostrajania na target;
 - **H4 — granice stosowalności:** rodzaj przesunięcia technicznego i biologicznego wyznacza przewidywalne warunki, w których relacje pomagają, są neutralne albo zawodzą.
@@ -83,6 +96,10 @@ Rekomendowany czas realizacji: **48 miesięcy**. Jest wystarczający do utworzen
 
 ### WP1 — Representation adequacy and abstention, miesiące 1–12
 
+- operacyjna analiza informacji zachowanej i traconej przez wartości, rangi,
+  ternarne relacje i prostą hybrydę;
+- taksonomia transformacji, wobec których każda reprezentacja jest niezmienna
+  albo podatna, przełożona na falsyfikowalne reżimy symulacyjne;
 - zamrożenie benchmarku, kohort i metadanych przed oceną;
 - rozszerzenie controlled regimes o techniczne confoundery, niepełne mapowanie i unknown-K;
 - kalibracja source-only diagnostyk oraz `NO_STABLE_STRUCTURE`;
@@ -170,7 +187,11 @@ Anchor sets nie wchodzą do zakresu podstawowego. Mogą być badaniem następczy
 
 ## 11. Nowatorstwo
 
-Nowością nie jest samo użycie rang, PAM ani zbioru relacji. Nowość wynika z ich połączenia w rygorystyczną architekturę:
+Nowością nie jest samo użycie rang, PAM, wielu widoków ani regułowego opisu
+klastrów. Multi-view clustering łączy reprezentacje, a istniejące metody
+interpretable clustering uczą drzewa lub reguły. Nowość wynika z ich
+specyficznego, rygorystycznego połączenia dla relacji wewnątrz próbki i
+przenośności między kohortami:
 
 - source-only wybór geometrii przed uczeniem profilu;
 - jawne wstrzymanie przy braku stabilnej struktury;
@@ -190,16 +211,19 @@ Rekomendowany minimalny skład:
 
 Skład personalny trzeba zweryfikować względem szczególnych ograniczeń SONATA BIS 16: nowy zespół, zakaz części kategorii seniorów poza PI oraz ograniczenia dotyczące wcześniejszej wspólnej realizacji projektów konkursowych. Nazwisk nie należy wpisywać do tekstu, zanim ta kontrola nie zostanie zakończona.
 
-Wykonalność wspierają: gotowy deterministyczny rdzeń Python, 138 testów pilota, pełny benchmark 630 par, adaptery do 11 zbiorów, zamrożony transfer dwóch kohort i publiczne repozytoria referencyjne. Niewykonane direct regions są planowanym przedmiotem badań, a nie ukrytym brakującym rezultatem.
+Wykonalność wspierają: gotowy deterministyczny rdzeń Python z testami
+poprawności, deterministyczności i braku leakage, pełny benchmark 630 par,
+adaptery do 11 zbiorów, zamrożony transfer dwóch kohort i publiczne repozytoria
+referencyjne. Niewykonane direct regions są planowanym przedmiotem badań, a nie
+ukrytym brakującym rezultatem.
 
 ## 13. Co wymaga decyzji użytkownika przed wersją finalną
 
-1. Wybór tytułu: TRPP-centred albo representation-adequacy-centred.
-2. Czas projektu: rekomendowane 48 miesięcy.
-3. Skład i role zespołu po kontroli formalnej SONATA BIS.
-4. Dwa konkretne moduły chorobowe i trzecia kohorta w każdym module.
-5. Czy współpraca Girona ma być formalnie opisana i czy obejmuje osobę wymienioną z nazwiska.
-6. Wysokość budżetu, post-doc versus specjalista oraz model stypendium doktoranta.
-7. Ostateczny panel i słowa pomocnicze; rekomendacja robocza: ST6, ST6_11, ST6_13, ewentualnie ST6_07.
+1. Czas projektu: rekomendowane 48 miesięcy.
+2. Skład i role zespołu po kontroli formalnej SONATA BIS.
+3. Dwa konkretne moduły chorobowe i trzecia kohorta w każdym module.
+4. Czy współpraca Girona ma być formalnie opisana i czy obejmuje osobę wymienioną z nazwiska.
+5. Wysokość budżetu, post-doc versus specjalista oraz model stypendium doktoranta.
+6. Ostateczny panel i słowa pomocnicze; rekomendacja robocza: ST6, ST6_11, ST6_13, ewentualnie ST6_07.
 
 Do czasu tych decyzji tekst jest kompletnym rdzeniem naukowym, ale nie finalnym wnioskiem OSF.

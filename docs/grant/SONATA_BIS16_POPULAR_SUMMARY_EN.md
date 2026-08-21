@@ -1,4 +1,4 @@
-# Transportable Relational Patient Profiles
+# Representation Adequacy and Transportable Relational Profiles
 
 Omics studies measure the activity of thousands of genes or other molecules in
 each patient. A common aim is to discover groups of people who may share disease
@@ -9,13 +9,15 @@ simple rules such as “gene A is more active than gene B”. These rules may be
 easier to interpret and less dependent on laboratory scale, but they are not
 always better.
 
-This project will develop Transportable Relational Patient Profiles. Using only
-one discovery cohort, the software will first test whether the data support
-comparisons based on values, ranks, gene-to-gene relations, or a combination of
-these views. If none provides credible structure, the software will be allowed
-to withhold clustering. For supported groups, it will learn short profiles made
-of relations between molecular features. Such a profile will provide a readable
-description of a group instead of an artificial “average patient”.
+This project will determine **when each way of comparing patients is
+supported**, and will then develop Transportable Relational Patient Profiles
+where the evidence justifies them. Using only one discovery cohort, the
+software will test comparisons based on values, ranks, gene-to-gene relations,
+or a combination of these views. If none provides credible structure, the
+software will be allowed to withhold clustering. For supported groups, it will
+learn short profiles made of relations between molecular features. Such a
+profile will provide a readable description of a group instead of an
+artificial “average patient”.
 
 The complete profile will then be frozen and applied to patients from
 independent cohorts. New-patient data will not be used to retrain the method,
@@ -40,4 +42,3 @@ therefore does not assume that relations will always win. Its outcome will be a
 set of methods and transparent rules defining when relational patient profiles
 are credible, when measurement values should be retained, and when withholding
 clustering is the honest conclusion.
-

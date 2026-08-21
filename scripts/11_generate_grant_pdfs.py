@@ -34,7 +34,7 @@ DEFAULT_OUTPUT_DIR = ROOT / "output" / "pdf"
 EVIDENCE_PATH = ROOT / "docs" / "evidence" / "GRANT_PDF_VALIDATION.json"
 PAGE_MARKER = "<!-- PAGE_BREAK -->"
 FONT_DIR = Path("/usr/share/fonts/truetype/dejavu")
-BUILD_DATE = "2026-08-17"
+BUILD_DATE = "2026-08-21"
 
 NAVY = colors.HexColor("#17365D")
 BLUE = colors.HexColor("#3E75A6")
@@ -56,7 +56,7 @@ SPECS = (
     DocumentSpec(
         source="SONATA_BIS16_SHORT_DESCRIPTION_EN.md",
         output="SONATA_BIS16_SHORT_DESCRIPTION_EN_DRAFT.pdf",
-        short_header="TRPP - short project description",
+        short_header="Representation adequacy - short project description",
         expected_pages=6,
         body_size=8.8,
         leading=10.65,
@@ -64,7 +64,7 @@ SPECS = (
     DocumentSpec(
         source="SONATA_BIS16_DETAILED_DESCRIPTION_EN_DRAFT.md",
         output="SONATA_BIS16_DETAILED_DESCRIPTION_EN_DRAFT.pdf",
-        short_header="TRPP - detailed project description",
+        short_header="Representation adequacy - detailed project description",
         expected_pages=15,
         body_size=8.7,
         leading=10.55,
@@ -72,7 +72,7 @@ SPECS = (
     DocumentSpec(
         source="SONATA_BIS16_POPULAR_SUMMARY_PL.md",
         output="SONATA_BIS16_POPULAR_SUMMARY_PL.pdf",
-        short_header="TRPP - streszczenie popularnonaukowe",
+        short_header="Adekwatnosc reprezentacji - streszczenie popularnonaukowe",
         expected_pages=1,
         body_size=10.2,
         leading=13.4,
@@ -80,7 +80,7 @@ SPECS = (
     DocumentSpec(
         source="SONATA_BIS16_POPULAR_SUMMARY_EN.md",
         output="SONATA_BIS16_POPULAR_SUMMARY_EN.pdf",
-        short_header="TRPP - popular-science summary",
+        short_header="Representation adequacy - popular-science summary",
         expected_pages=1,
         body_size=10.2,
         leading=13.4,
@@ -299,7 +299,11 @@ def _header_footer(header: str):  # type: ignore[no-untyped-def]
         pdf.drawString(18 * mm, height - 9.4 * mm, header)
         pdf.drawRightString(width - 18 * mm, height - 9.4 * mm, "SONATA BIS 16 | scientific draft")
         pdf.line(18 * mm, 10.2 * mm, width - 18 * mm, 10.2 * mm)
-        pdf.drawString(18 * mm, 7.2 * mm, "TRPP | source/target boundary preserved")
+        pdf.drawString(
+            18 * mm,
+            7.2 * mm,
+            "Representation adequacy | source/target boundary preserved",
+        )
         pdf.drawRightString(width - 18 * mm, 7.2 * mm, f"Page {doc.page}")
         pdf.restoreState()
 
@@ -327,7 +331,7 @@ def build_pdf(spec: DocumentSpec, output_dir: Path) -> dict[str, object]:
         topMargin=15.5 * mm,
         bottomMargin=14 * mm,
         title=spec.short_header,
-        author="TRPP project team",
+        author="SONATA BIS project team",
         subject="SONATA BIS 16 scientific application draft",
         creator="deterministic ReportLab builder",
         pageCompression=1,
