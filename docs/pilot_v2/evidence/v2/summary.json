@@ -1,0 +1,21 @@
+{
+  "gate_go": false,
+  "metrics": {
+    "best_transfer_ari": 0.9595921733263363,
+    "best_transfer_coverage_at_best_ari": 0.9252336448598131,
+    "null_high_confidence_rate": 0.0,
+    "real_median_difference_rr_minus_relation": 0.011631777519138044,
+    "real_relation_pam_median_ari": 0.022255265253308964,
+    "real_rr_median_ari": 0.03318371110413099,
+    "synthetic_rel_median_ari": 1.0,
+    "synthetic_rel_median_rule_recovery": 0.16666666666666666
+  },
+  "prospective_gate": {
+    "null_control": true,
+    "real_noninferiority": true,
+    "rule_recovery": false,
+    "synthetic_ari": true,
+    "transfer": true
+  },
+  "schema": "PilotV2Summary/v1"
+}

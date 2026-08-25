@@ -1,0 +1,25 @@
+protocol_version: "2.0"
+base_seed: 20260825
+k: 2
+rr_direct:
+  feature_budget: 60
+  max_pairs: 1500
+  max_rules: 25
+  min_support: 0.80
+  min_contrast: 0.10
+  max_iter: 50
+  frozen_min_score: 0.60
+  frozen_min_margin: 0.05
+synthetic:
+  replicates: 40
+  n_source: 120
+  n_target: 120
+  p: 80
+  noise_sd: [0.25, 0.50, 0.75]
+real:
+  datasets: [golub, colon, DLBCL, GDS2771, GSE10072, GSE17920, GSE19804, GSE25837, GSE27272, GSE3365, GSE6613]
+  transfer_pairs:
+    - [GSE10072, GSE19804]
+    - [GSE19804, GSE10072]
+reporting:
+  figure_dpi: 180
