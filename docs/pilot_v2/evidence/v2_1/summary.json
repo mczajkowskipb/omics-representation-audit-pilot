@@ -1,0 +1,14 @@
+{
+  "metrics": {
+    "all_replicates_exact_pair_recovery": true,
+    "all_replicates_source_ari_at_least_0_75": true,
+    "median_exact_pair_recovery": 1.0,
+    "median_source_ari": 1.0,
+    "median_target_ari": 1.0,
+    "median_target_coverage": 1.0
+  },
+  "pilot_v2_prospective_gate_remains": "STOP",
+  "reason_for_addendum": "Original REL generator induced many equally discriminative cross-pair relations, making exact recovery of six designated pairs non-identifiable.",
+  "schema": "PilotV21IdentifiabilitySummary/v1",
+  "status": "DIAGNOSTIC_ADDENDUM_NOT_GATE_RESCUE"
+}

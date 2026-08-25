@@ -169,3 +169,17 @@ screening, audit scores, medoids, thresholds or method selection. Every target
 row is assigned independently to frozen source medoids. Forced assignments are
 used for representation ARI/regret; the separately frozen rejection rule is
 used for coverage and `UNASSIGNED` reporting.
+
+## Pilot v2: direct sparse relational prototypes
+
+Development after the frozen `pilot-closeout-2026-08-17` tag is isolated from the historical pilot evidence. Pilot v2 evaluates `RR_DIRECT`, where sparse within-sample relations are learned as executable cluster prototypes rather than added only as post-hoc explanations.
+
+The reproducible v2 workflow includes a synthetic falsification block, eleven real omics datasets, bidirectional frozen lung-cohort transfer, compact tracked evidence and automatically generated figures:
+
+```bash
+PYTHON_BIN=.venv/bin/python bash scripts/20_run_pilot_v2.sh
+PYTHON_BIN=.venv/bin/python bash scripts/21_run_pilot_v2_1.sh
+PYTHON_BIN=.venv/bin/python bash scripts/22_finalize_pilot_v2.sh
+```
+
+The original Pilot v2 prospective gate is retained exactly as observed: **STOP** because the designated-pair recovery criterion failed. Pilot v2.1 is explicitly an identifiability diagnostic and does not retrospectively convert that gate to GO. See `docs/pilot_v2/PILOT_EVIDENCE.md` and `docs/pilot_v2/PROTOCOL.md`.
