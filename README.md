@@ -1,9 +1,119 @@
 # Omics Representation Audit Pilot
 
-Deterministic Python reference implementation for the source-only
-representation audit in the SONATA BIS pilot. The repository implements the
-approved implementation scope **PILOT-001--015** plus the protocol-required
-eleven real within-dataset audits and the **PILOT-019--020** closeout.
+**Interpretable omics clustering through representation auditing and sparse within-sample relational prototypes.**
+
+![Python](https://img.shields.io/badge/Python-3.11%2B-blue)
+![Tests](https://img.shields.io/badge/tests-155%20passed-brightgreen)
+![Real data](https://img.shields.io/badge/real%20omics%20datasets-11-blueviolet)
+![Method](https://img.shields.io/badge/method-RR__DIRECT-orange)
+![License](https://img.shields.io/badge/license-MIT-green)
+
+This repository contains a deterministic, reproducible computational pilot for
+**representation adequacy, interpretable relational clustering, and transportable
+patient profiles in omics data**.
+
+The project progresses from auditing VALUE / RELATIONAL / HYBRID representations
+to **RR_DIRECT**, where the cluster prototype itself is a sparse executable set
+of within-sample relations such as `gene_A > gene_B`.
+
+[**Pilot evidence**](docs/pilot_v2/PILOT_EVIDENCE.md) ·
+[**Protocol**](docs/pilot_v2/PROTOCOL.md) ·
+[**RR_DIRECT implementation**](src/rep_audit/prototypes/rr_direct.py) ·
+[**Reproduction guide**](docs/pilot_v2/README.md)
+
+---
+
+## Results at a glance
+
+| Evidence | Result |
+|---|---:|
+| Synthetic relational structure — RR_DIRECT median ARI | **1.000** |
+| Best frozen cross-cohort transfer ARI | **0.960** |
+| Coverage at best transfer | **92.5%** |
+| RR_DIRECT median ARI across 11 real omics datasets | **0.033** |
+| RELATION/PAM median ARI across 11 real omics datasets | **0.022** |
+| Pilot v2.1 exact-pair recovery | **1.000** |
+| Reproducibility validation | **155 tests passed** |
+
+> **Scientific status:** Pilot v2 prospectively passed **4/5** criteria and
+> remains **STOP** because the original designated-pair recovery endpoint failed.
+> Pilot v2.1 showed that this endpoint was non-identifiable in the original
+> synthetic generator. It is a diagnostic addendum, **not** a retrospective gate rescue.
+
+## Core idea
+
+```mermaid
+flowchart LR
+    A["Omics sample"] --> B["Within-sample relations"]
+    B --> C["RR_DIRECT"]
+    C --> D["Sparse relational prototype"]
+    D --> E["Cluster membership"]
+    D --> F["Human-readable explanation"]
+    D --> G["Frozen assignment of unseen samples"]
+```
+
+Instead of representing a cluster only by a centroid or medoid, RR_DIRECT learns
+a compact executable prototype, for example:
+
+`P_k = { gene_A > gene_B, gene_C < gene_D, ... }`
+
+The same prototype defines the group, explains membership, and can be frozen for
+assignment of unseen samples with an explicit `UNASSIGNED` outcome.
+
+## Results gallery
+
+### Synthetic relational structure
+
+![Synthetic relational structure](docs/pilot_v2/evidence/v2/figures/fig1_synthetic_ari.png)
+
+Comparison of VALUE/PAM, RELATION/PAM and RR_DIRECT across the three noise levels.
+
+### Eleven real omics datasets
+
+![Real omics datasets](docs/pilot_v2/evidence/v2/figures/fig2_real_ari.png)
+
+Descriptive ARI comparison across the eleven frozen binary omics datasets.
+
+### Frozen cross-cohort transfer
+
+![Frozen cross-cohort transfer](docs/pilot_v2/evidence/v2/figures/fig3_transfer.png)
+
+RR_DIRECT prototypes learned in the source cohort are transferred without target reclustering.
+
+### Prototype complexity
+
+![Prototype complexity](docs/pilot_v2/evidence/v2/figures/fig4_prototype_sizes.png)
+
+Number of executable relations in the learned RR_DIRECT prototypes.
+
+### Identifiability diagnostic
+
+![Pilot v2.1 exact-pair recovery](docs/pilot_v2/evidence/v2_1/figures/fig_v21_rule_recovery.png)
+
+Pilot v2.1 makes the designated relations uniquely identifiable while leaving
+RR_DIRECT hyperparameters unchanged.
+
+## Selected real-data observations
+
+| Dataset | RR_DIRECT | RELATION/PAM | VALUE/PAM |
+|---|---:|---:|---:|
+| GSE10072 | **0.926** | 0.087 | 0.598 |
+| GSE19804 | **0.839** | 0.063 | -0.001 |
+| Colon | **0.446** | 0.002 | -0.042 |
+| DLBCL | **0.329** | 0.022 | 0.018 |
+
+These are **descriptive pilot observations**, not a claim of broad real-data
+superiority. The complete results and methodological limitations are documented
+in [PILOT_EVIDENCE.md](docs/pilot_v2/PILOT_EVIDENCE.md).
+
+## Frozen transfer
+
+| Source → Target | ARI | Coverage |
+|---|---:|---:|
+| GSE10072 → GSE19804 | **0.771** | **96.7%** |
+| GSE19804 → GSE10072 | **0.960** | **92.5%** |
+
+---
 
 ## The idea in plain language
 
@@ -34,8 +144,10 @@ interpretable analogue of a centroid.
 
 Read-only real-data adapters and bidirectional frozen target transfer are now
 implemented. The full 630-pair Gate B simulation passed, while the external
-lung Gate C stopped narrowly on the preregistered regret criterion. Sparse
-post-hoc/direct regions and anchors therefore remain intentionally absent.
+lung Gate C stopped narrowly on the preregistered regret criterion. In the frozen v1 closeout, sparse
+post-hoc/direct regions and anchors therefore remained intentionally absent.
+Pilot v2 subsequently introduces RR_DIRECT as a separate post-closeout
+methodological development.
 Fuzzy methods, evolutionary algorithms, deep learning, federated learning,
 CUDA and a portal remain outside scope.
 
