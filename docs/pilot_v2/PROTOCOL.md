@@ -22,7 +22,7 @@ A frozen source→target transfer block uses GSE10072/GSE19804 in both direction
 
 ## Gate v2
 GO for continued SONATA development requires all of:
-- synthetic median RR_DIRECT ARI >= 0.75 across non-NULL settings;
+- synthetic median RR_DIRECT ARI >= 0.75 across REL settings;
 - median rule-recovery >= 0.60;
 - the preregistered v2 NULL proxy — synthetic-null ARI > 0.50 together with mean source score margin > 0.15 — occurs in no more than 10% of replicates;
 - RR_DIRECT median real-data ARI is not worse than RELATION/PAM by >0.05;
