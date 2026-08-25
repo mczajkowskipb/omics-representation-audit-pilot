@@ -13,7 +13,7 @@ Can clusters be learned directly as sparse within-sample relational prototypes t
 4. RR_DIRECT — direct sparse relational prototype clustering.
 
 ## Synthetic falsification block
-Known relational clusters are generated and transferred under magnitude shifts, monotone sample transforms, noise, missingness, and NULL structure. Primary endpoints: ARI, rule recovery, stability, prototype size, frozen-target ARI, coverage.
+Known relational clusters are generated under sample-wise positive affine magnitude distortions and three noise levels, alongside VALUE and NULL controls. The implemented v2 endpoints are ARI, designated-pair recovery, prototype size, frozen-target ARI, coverage, and score margins. Missing-value handling is exercised separately and is used for real-data execution; v2 does not contain a dedicated synthetic missingness sweep or a formal stability endpoint.
 
 ## Real-data block
 Eleven frozen binary omics datasets already present in the repository are fitted label-blind. Predictions/prototypes are written before evaluation labels are opened. Evaluation then reports ARI/NMI only; labels never enter fitting.
@@ -24,11 +24,13 @@ A frozen source→target transfer block uses GSE10072/GSE19804 in both direction
 GO for continued SONATA development requires all of:
 - synthetic median RR_DIRECT ARI >= 0.75 across non-NULL settings;
 - median rule-recovery >= 0.60;
-- NULL does not yield high-confidence stable structure in >10% of replicates;
+- the preregistered v2 NULL proxy — synthetic-null ARI > 0.50 together with mean source score margin > 0.15 — occurs in no more than 10% of replicates;
 - RR_DIRECT median real-data ARI is not worse than RELATION/PAM by >0.05;
 - at least one frozen lung transfer direction reaches ARI >= 0.70 with coverage >= 0.70.
 
 Thresholds are prospective for Pilot v2 and must not be relaxed after looking at results.
+
+**Interpretation of the NULL criterion.** The v2 NULL endpoint is a preregistered proxy, not a complete source-only no-structure detector. RR_DIRECT v2 always fits the frozen K=2 benchmark and does not yet implement source-side abstention. A confirmatory SONATA-stage method should add source-only null/stability calibration and explicit `NO_STABLE_STRUCTURE` / abstention.
 
 ## Missing-data handling (implementation clarification before successful v2 evaluation)
 - Features with no observed source values are excluded before VALUE/RELATION screening and RR_DIRECT feature selection.

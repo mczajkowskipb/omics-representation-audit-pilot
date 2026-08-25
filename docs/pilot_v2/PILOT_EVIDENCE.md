@@ -27,6 +27,12 @@ Pilot v2.1 is a diagnostic identifiability addendum only. It does not convert Pi
 
 The low median ARI on the eleven real within-dataset tasks is evidence against claiming broad real-data superiority at this stage. The strong frozen transfer result is promising but should be presented as a pilot observation, not definitive external validation of the full future framework.
 
+### Interpretation limitations identified during repository review
+
+The real-data method comparison is descriptive rather than a feature-screening-matched confirmatory benchmark. VALUE/PAM uses all observed features, whereas RELATION/PAM and RR_DIRECT use separate source-only feature-selection paths; relation candidate sets are also deterministically budget-limited. Consequently, the observed RR_DIRECT − RELATION/PAM ARI difference must not be interpreted as an isolated causal effect of the clustering mechanism. A confirmatory benchmark should use matched feature universes and matched candidate-relation budgets.
+
+The v2 NULL result is likewise a preregistered proxy based on agreement with synthetic null labels plus score margin. It does not demonstrate that RR_DIRECT can independently detect absence of cluster structure, because v2 always fits K=2. Explicit source-only null/stability calibration and abstention remain future methodological work.
+
 ## Eleven real omics datasets
 
 | dataset | RELATION_PAM | RELATION_PAM_POSTHOC | RR_DIRECT | VALUE_PAM |
