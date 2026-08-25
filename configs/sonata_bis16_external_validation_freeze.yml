@@ -1,0 +1,44 @@
+protocol_version: "sonata-bis16-external-freeze-v2"
+freeze_timestamp: "2026-08-25T19:50:00+02:00"
+status: "metadata_only_targets_not_outcome_evaluated"
+
+primary_gate:
+  name: "G5 multi-cohort transport"
+  module: "lung_adenocarcinoma"
+  source:
+    accession: "GSE19804"
+    platform: "GPL570"
+    status: "previously_seen_in_pilot"
+  targets:
+    - accession: "GSE27262"
+      platform: "GPL570"
+      status: "untouched_outcome"
+    - accession: "GSE32863"
+      platform: "GPL6884"
+      status: "untouched_outcome_metadata_previously_audited"
+  criteria_each_target:
+    minimum_coverage: 0.70
+    minimum_forced_all_sample_ari: 0.50
+  pass_rule: "both_targets_pass"
+  replacement_after_unseal: false
+
+mapping:
+  common_universe_from_platform_annotation_only: true
+  target_values_may_select_features: false
+  target_labels_may_select_features: false
+  multiple_probe_default_aggregation: "within-sample median"
+  hash_mapping_before_source_fit: true
+
+secondary_colorectal:
+  source: "GSE39582"
+  targets: ["GSE14333", "GSE33113"]
+  may_rescue_primary_gate: false
+
+firewall:
+  target_guided_normalization: false
+  target_guided_feature_selection: false
+  target_guided_relation_selection: false
+  target_guided_threshold_tuning: false
+  target_reclustering: false
+  prelabel_artifact_required: true
+

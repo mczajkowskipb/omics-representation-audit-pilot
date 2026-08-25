@@ -1,6 +1,6 @@
 # Omics Representation Audit Pilot
 
-**Interpretable omics clustering through representation auditing and sparse within-sample relational prototypes.**
+**Interpretable omics clustering through sparse executable within-sample relational prototypes.**
 
 ![Python](https://img.shields.io/badge/Python-3.11%2B-blue)
 ![Tests](https://img.shields.io/badge/tests-155%20passed-brightgreen)
@@ -8,18 +8,19 @@
 ![Method](https://img.shields.io/badge/method-RR__DIRECT-orange)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-This repository contains a deterministic, reproducible computational pilot for
-**representation adequacy, interpretable relational clustering, and transportable
-patient profiles in omics data**.
+This repository contains the reproducible computational pilot behind the programme
+**Sparse Relational Prototypes for Interpretable and Transportable Omics Clustering**.
 
-The project progresses from auditing VALUE / RELATIONAL / HYBRID representations
-to **RR_DIRECT**, where the cluster prototype itself is a sparse executable set
-of within-sample relations such as `gene_A > gene_B`.
+> **Can clusters be learned directly as sparse within-sample relational prototypes that simultaneously define a group, explain membership, and assign unseen objects?**
+
+A prototype is an executable set such as `{gene_A > gene_B, gene_C < gene_D, ...}`.
+The same object defines a cluster, explains membership and can be frozen for target-independent
+single-sample assignment. The future framework adds `UNASSIGNED` and `NO_STABLE_STRUCTURE`.
 
 [**Pilot evidence**](docs/pilot_v2/PILOT_EVIDENCE.md) ·
-[**Protocol**](docs/pilot_v2/PROTOCOL.md) ·
+[**Pilot v2 protocol**](docs/pilot_v2/PROTOCOL.md) ·
 [**RR_DIRECT implementation**](src/rep_audit/prototypes/rr_direct.py) ·
-[**Reproduction guide**](docs/pilot_v2/README.md)
+[**Prospective external-cohort freeze**](docs/grant/SONATA_BIS16_EXTERNAL_VALIDATION_FREEZE_v2.md)
 
 ---
 
@@ -35,10 +36,9 @@ of within-sample relations such as `gene_A > gene_B`.
 | Pilot v2.1 exact-pair recovery | **1.000** |
 | Reproducibility validation | **155 tests passed** |
 
-> **Scientific status:** Pilot v2 prospectively passed **4/5** criteria and
-> remains **STOP** because the original designated-pair recovery endpoint failed.
-> Pilot v2.1 showed that this endpoint was non-identifiable in the original
-> synthetic generator. It is a diagnostic addendum, **not** a retrospective gate rescue.
+> **Scientific status:** Pilot v2 remains **STOP** (4/5 prospective criteria passed).
+> Pilot v2.1 diagnosed non-identifiability of the failed exact-pair endpoint and is
+> **not** a retrospective gate rescue.
 
 ## Core idea
 
@@ -49,49 +49,26 @@ flowchart LR
     C --> D["Sparse relational prototype"]
     D --> E["Cluster membership"]
     D --> F["Human-readable explanation"]
-    D --> G["Frozen assignment of unseen samples"]
+    D --> G["Frozen assignment"]
+    G --> H["ASSIGNED / UNASSIGNED"]
 ```
-
-Instead of representing a cluster only by a centroid or medoid, RR_DIRECT learns
-a compact executable prototype, for example:
-
-`P_k = { gene_A > gene_B, gene_C < gene_D, ... }`
-
-The same prototype defines the group, explains membership, and can be frozen for
-assignment of unseen samples with an explicit `UNASSIGNED` outcome.
 
 ## Results gallery
 
 ### Synthetic relational structure
-
 ![Synthetic relational structure](docs/pilot_v2/evidence/v2/figures/fig1_synthetic_ari.png)
 
-Comparison of VALUE/PAM, RELATION/PAM and RR_DIRECT across the three noise levels.
-
 ### Eleven real omics datasets
-
 ![Real omics datasets](docs/pilot_v2/evidence/v2/figures/fig2_real_ari.png)
 
-Descriptive ARI comparison across the eleven frozen binary omics datasets.
-
 ### Frozen cross-cohort transfer
-
 ![Frozen cross-cohort transfer](docs/pilot_v2/evidence/v2/figures/fig3_transfer.png)
 
-RR_DIRECT prototypes learned in the source cohort are transferred without target reclustering.
-
 ### Prototype complexity
-
 ![Prototype complexity](docs/pilot_v2/evidence/v2/figures/fig4_prototype_sizes.png)
 
-Number of executable relations in the learned RR_DIRECT prototypes.
-
 ### Identifiability diagnostic
-
 ![Pilot v2.1 exact-pair recovery](docs/pilot_v2/evidence/v2_1/figures/fig_v21_rule_recovery.png)
-
-Pilot v2.1 makes the designated relations uniquely identifiable while leaving
-RR_DIRECT hyperparameters unchanged.
 
 ## Selected real-data observations
 
@@ -102,54 +79,41 @@ RR_DIRECT hyperparameters unchanged.
 | Colon | **0.446** | 0.002 | -0.042 |
 | DLBCL | **0.329** | 0.022 | 0.018 |
 
-These are **descriptive pilot observations**, not a claim of broad real-data
-superiority. The complete results and methodological limitations are documented
-in [PILOT_EVIDENCE.md](docs/pilot_v2/PILOT_EVIDENCE.md).
+These are **descriptive pilot observations**, not a claim of broad superiority.
 
-## Frozen transfer
+## Frozen pilot transfer
 
 | Source → Target | ARI | Coverage |
 |---|---:|---:|
 | GSE10072 → GSE19804 | **0.771** | **96.7%** |
 | GSE19804 → GSE10072 | **0.960** | **92.5%** |
 
----
+## Prospective confirmatory transfer
 
-## The idea in plain language
+| Role | Cohort | Platform | Status |
+|---|---|---|---|
+| Source | GSE19804 | GPL570 | previously used pilot source |
+| Target 1 | **GSE27262** | GPL570 | untouched outcome |
+| Target 2 | **GSE32863** | GPL6884 | untouched outcome; metadata audited only |
 
-The grant-facing central question is deliberately narrow: under which
-source-observable conditions should omics clustering retain magnitude
-information, replace it with within-sample relations, combine both views, or
-abstain? `TRPP` names the principal relational-profile method developed after
-that decision; it is not an assumption that relations must win.
+One source artifact must be applied unchanged to both targets.
+The primary gate requires **coverage >=0.70 and forced all-sample ARI >=0.50 on both targets**.
+A failed target cannot be replaced after evaluation unseal.
 
-The same patient can be compared in several ways:
+## How v1 and v2 fit together
 
-- **VALUE**: compare absolute, source-scaled measurements;
-- **RELATIONAL**: compare which features rank above or below other features;
-- **HYBRID**: combine both distances;
-- **NO_STABLE_STRUCTURE**: abstain when no representation supports stable groups.
+Historical v1 **Representation Audit** evidence remains frozen and useful for reliability/applicability.
+It compared VALUE, RELATIONAL and HYBRID representations and tested source-observable predictors of transfer.
 
-The implemented Representation Audit compares those views using only the
-source cohort. It measures split prediction strength, cluster stability and
-perturbation invariance, rejects degenerate or NULL-like structure, and then
-selects VALUE, RELATIONAL, HYBRID, or `NO_STABLE_STRUCTURE`. Every candidate
-uses the same deterministic PAM implementation.
+The current methodological centre is different: **RR_DIRECT learns the relational prototype itself jointly
+with cluster membership**. Representation adequacy is now a supporting reliability/applicability diagnostic,
+not the central grant question.
 
-PAM represents each cluster by a **medoid**, meaning one actual source sample
-that is most central under the selected distance. A later post-hoc region step
-(PILOT-016) may summarize a relational cluster by sparse rules such as
-`gene_A > gene_B` and `gene_C < gene_D`. That rule set is the planned
-interpretable analogue of a centroid.
+## Leakage boundary
 
-Read-only real-data adapters and bidirectional frozen target transfer are now
-implemented. The full 630-pair Gate B simulation passed, while the external
-lung Gate C stopped narrowly on the preregistered regret criterion. In the frozen v1 closeout, sparse
-post-hoc/direct regions and anchors therefore remained intentionally absent.
-Pilot v2 subsequently introduces RR_DIRECT as a separate post-closeout
-methodological development.
-Fuzzy methods, evolutionary algorithms, deep learning, federated learning,
-CUDA and a portal remain outside scope.
+Core fitting modules do not import evaluation labels. Target values may only execute a frozen artifact;
+they cannot alter source preprocessing, feature/relation selection, K, prototype weights or rejection thresholds.
+Prospective platform mappings are frozen from annotation metadata before source fitting.
 
 ## Setup and verification
 
@@ -162,131 +126,7 @@ python -m venv .venv
 PYTHON_BIN=.venv/bin/python bash scripts/01_verify_core.sh
 ```
 
-`requirements-grant.lock` is required for the complete test suite and for
-deterministic PDF regeneration. A minimal scientific installation that does not
-run grant/PDF tests may omit it, but such a run is not the complete acceptance
-configuration recorded in the release reports.
-
-Polish operational instructions are available in:
-
-- `docs/GITHUB_SERVER_GUIDE_PL.md` - publication on GitHub, clean server setup,
-  reference snapshots, archived-result validation and optional recomputation;
-- `docs/FILES_AND_ARCHIVES_MANIFEST_PL.md` - exact stable filenames, generated
-  release-name patterns and the distinction between required and optional
-  artifacts.
-
-The grant-strategy decision and its scope boundary are documented in
-`docs/grant/SONATA_BIS16_STRATEGIC_DECISION_MODIFY_PL.md`. It records the
-`MODIFY` decision: representation adequacy becomes the central question,
-omics remains the sole primary testbed, and TRPP remains the main method family.
-The accompanying validation and change log is
-`docs/SONATA_BIS16_NARRATIVE_UPDATE_REPORT.md`.
-
-The extended command additionally runs the frozen 40-dataset smoke grid and
-refuses to overwrite an existing result directory:
-
-```bash
-PYTHON_BIN=.venv/bin/python \
-SMOKE_OUTPUT=results/smoke40_verify \
-bash scripts/03_verify_pilot_007_011.sh
-```
-
-Two independent smoke runs can be compared while deliberately excluding
-non-deterministic runtime measurements:
-
-```bash
-.venv/bin/python scripts/04_compare_smoke_artifacts.py \
-  results/smoke40_run_a results/smoke40_run_b
-```
-
-The accepted smoke result is documented in `docs/PILOT_007_011_REPORT.md`.
-The completed full grid, repository adapters, two real transfers and Gate B/C
-decisions are documented in `docs/PILOT_012_015_REPORT.md`.
-
-The final closeout, including all eleven within-dataset audits, integrity
-validation, grant-ready tables/figures and the formal decision not to run
-PILOT-016--018 after Gate C STOP, is documented in
-`docs/PILOT_FINAL_REPORT.md`.
-
-The full label-free simulation phase and its separately gated evaluation are:
-
-```bash
-.venv/bin/python scripts/05_run_full630.py --phase prelabel --max-workers 8
-.venv/bin/python scripts/05_run_full630.py --phase evaluate
-```
-
-After Gate B is GO, the two real directions use the same two-phase boundary:
-
-```bash
-.venv/bin/python scripts/06_run_real_lung.py --phase prelabel --max-workers 8
-.venv/bin/python scripts/06_run_real_lung.py --phase evaluate
-```
-
-The eleven real within-dataset audits use the same physical prelabel/evaluation
-boundary:
-
-```bash
-.venv/bin/python scripts/07_run_real_within.py --phase prelabel --max-workers 8
-.venv/bin/python scripts/07_run_real_within.py --phase evaluate
-```
-
-Final validation and reporting are reproducible with:
-
-```bash
-.venv/bin/python scripts/08_validate_and_collect.py --run-tests
-.venv/bin/python scripts/09_generate_closeout_report.py
-```
-
-## Post-pilot grant package
-
-The pilot remains closed at Gate C STOP. Grant-facing material is kept under
-`docs/grant/` and is validated against the frozen PILOT-019 evidence rather
-than manually copying result values:
-
-```bash
-.venv/bin/python scripts/10_validate_grant_package.py
-```
-
-The package contains a Polish scientific core, an OSF-oriented PL/EN starter,
-an insertion-ready English preliminary-results section and explicit claim
-boundaries. It does not execute or claim results for PILOT-016--018.
-
-## Release handoff
-
-After committing a documentation or software release, a deterministic handoff
-package can be built outside the repository with:
-
-```bash
-.venv/bin/python scripts/12_build_handoff_package.py \
-  --results-archive /absolute/path/to/omics-representation-audit-pilot-results-9adae88.tar.gz \
-  --output-dir /absolute/path/to/release-output
-```
-
-The builder refuses a dirty tracked worktree, verifies the frozen results
-archive SHA-256, creates a source snapshot, full Git bundle, evidence archive,
-exact release manifest, internal checksums and one all-in-one ZIP.
-
-## Leakage boundary
-
-`DatasetBundle` deliberately has no label field. Evaluation labels live in the
-separate `rep_audit.evaluation` namespace. Core fitting, representation,
-clustering and audit modules cannot import that namespace. A fixed
-experimental `K` is supplied by frozen configuration and is never inferred
-from class labels. Target values and target labels are not accepted by the
-source-audit or selector interfaces.
-
-For transfer, target feature IDs may define a predeclared common platform
-universe, but target values cannot affect source preprocessing, relation
-screening, audit scores, medoids, thresholds or method selection. Every target
-row is assigned independently to frozen source medoids. Forced assignments are
-used for representation ARI/regret; the separately frozen rejection rule is
-used for coverage and `UNASSIGNED` reporting.
-
-## Pilot v2: direct sparse relational prototypes
-
-Development after the frozen `pilot-closeout-2026-08-17` tag is isolated from the historical pilot evidence. Pilot v2 evaluates `RR_DIRECT`, where sparse within-sample relations are learned as executable cluster prototypes rather than added only as post-hoc explanations.
-
-The reproducible v2 workflow includes a synthetic falsification block, eleven real omics datasets, bidirectional frozen lung-cohort transfer, compact tracked evidence and automatically generated figures:
+## Reproduce Pilot v2 / v2.1
 
 ```bash
 PYTHON_BIN=.venv/bin/python bash scripts/20_run_pilot_v2.sh
@@ -294,4 +134,4 @@ PYTHON_BIN=.venv/bin/python bash scripts/21_run_pilot_v2_1.sh
 PYTHON_BIN=.venv/bin/python bash scripts/22_finalize_pilot_v2.sh
 ```
 
-The original Pilot v2 prospective gate is retained exactly as observed: **STOP** because the designated-pair recovery criterion failed. Pilot v2.1 is explicitly an identifiability diagnostic and does not retrospectively convert that gate to GO. See `docs/pilot_v2/PILOT_EVIDENCE.md` and `docs/pilot_v2/PROTOCOL.md`.
+The historical tag `pilot-closeout-2026-08-17` and all negative gate decisions remain unchanged.
