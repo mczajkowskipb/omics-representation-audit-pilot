@@ -1,3 +1,8 @@
+> **Historical pilot archive.**
+> This repository preserves the frozen Representation Audit and RR_DIRECT pilot evidence, including the original GO/STOP decisions.
+> The current SONATA BIS research programme and clean RPP/RTC implementation are maintained at:
+> https://github.com/mczajkowskipb/transferable-relational-patient-profiles
+
 # Omics Representation Audit Pilot
 
 **Interpretable omics clustering through sparse executable within-sample relational prototypes.**
